@@ -44,3 +44,6 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 gem 'kaminari'
+gem 'ransack'
+
+gem 'pry-rails', :group => :development
