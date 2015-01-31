@@ -41,8 +41,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 #gemas para el diseño
 gem 'bootstrap-sass'
+#gem 'therubyracer'
+#gem 'therubyrhino'
+#gem 'ruby-nodejs', '~> 0.0.1'
 gem 'autoprefixer-rails'
-
+	
 gem 'kaminari'
 gem 'ransack'
 
