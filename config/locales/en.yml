@@ -31,6 +31,8 @@ en:
         destroy:  "Borrar"
         save:     "Salvar"
         update:   "Actualizar"
+        load:     "Cargar Compra"
+        sale:     "Hacer Venta"
         new_item: "Crear un nuevo articulo"
     titles:
       inventory:
@@ -49,3 +51,4 @@ en:
           cdate:       "Fecha creacion"
           category:    "Categoria"
           status:      "Estado en el sistema"
+          actions:     "Acciones a tomar"

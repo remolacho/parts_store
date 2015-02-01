@@ -1,35 +1,43 @@
-  <% if @inventory_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@inventory_item.errors.count, "error") %> prohibited this inventory_item from being saved:</h2>
-
-      <ul>
-      <% @inventory_item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class= "col-xs-3"></div>
+<div class= "col-xs-6">
+  <div class= "row well">
+    <div class="form-groupn col-xs-8">
+      <%= obj.label  t("views.fields.inventory.item.category") %><br>
+      <%= obj.text_field :category_id, class: "form-control" %>
     </div>
-  <% end %>
+  </div>  
+  
+  <div class= "row well">
+    <div class="form-group col-xs-8">
+      <%= obj.label t("views.fields.inventory.item.name") %><br>
+      <%= obj.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+ 
+  <div class= "row well"> 
+    <div class="form-group col-xs-4">
+      <%= obj.label  t("views.fields.inventory.item.costprice") %><br>
+      <%= obj.number_field :costprice, class: "form-control" %>
+    </div>
+ 
+    <div class="form-group col-xs-4">
+      <%= obj.label  t("views.fields.inventory.item.saleprice") %><br>
+      <%= obj.number_field :saleprice, class: "form-control" %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= obj.label t("views.fields.inventory.item.name") %><br>
-    <%= obj.text_field :name %>
+  <div class= "row well"> 
+    <div class="form-group col-xs-8">
+      <%= obj.label t("views.fields.inventory.item.description") %><br>
+      <%= obj.text_area :description, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= obj.label t("views.fields.inventory.item.description") %><br>
-    <%= obj.text_area :description %>
-  </div>
-  <div class="field">
-    <%= obj.label  t("views.fields.inventory.item.costprice") %><br>
-    <%= obj.number_field :costprice %>
-  </div>
-  <div class="field">
-    <%= obj.label  t("views.fields.inventory.item.saleprice") %><br>
-    <%= obj.number_field :saleprice %>
-  </div>
-  <div class="field">
-    <%= obj.label  t("views.fields.inventory.item.category") %><br>
-    <%= obj.text_field :category_id %>
-  </div>
-  </br>
-  <%= obj.submit t("views.links.btn.save"), class: "btn btn-primary" %>
 
+  <div class= "row"> 
+    <div class="col-xs-8">
+      <%= obj.submit t("views.links.btn.save"), class: "btn btn-success" %>
+      <%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
+    </div>
+  </div>
+
+</div>

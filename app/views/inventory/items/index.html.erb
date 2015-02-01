@@ -1,34 +1,34 @@
-<%= link_to t("views.links.btn.new_item"), new_inventory_item_path, class: "btn btn-primary" %>
-
-<h1><%= t("views.titles.inventory.item.index") %></h1>
-
-<table>
+<h1><%= link_to t("views.links.btn.new_item"), new_inventory_item_path, class: "btn btn-primary" %></h1>
+<h3><%= t("views.titles.inventory.item.index") %></h3>
+<div class="table-responsive">
+<table class="table table-hover" border=1>
   <thead>
-    <tr>
+    <tr class="danger<%#= @row_colors. %>">
+      <th>#</th>
       <th><%= t("views.fields.inventory.item.name") %></th>
-      <th><%= t("views.fields.inventory.item.description") %></th>
       <th><%= t("views.fields.inventory.item.costprice") %></th>
       <th><%= t("views.fields.inventory.item.saleprice") %></th>
       <th><%= t("views.fields.inventory.item.cdate") %></th>
       <th><%= t("views.fields.inventory.item.category") %></th>
-      <th colspan="3"></th>
+      <th colspan="4"><center><%= t("views.fields.inventory.item.actions") %></center></th>
     </tr>
   </thead>
 
   <tbody>
     <% @inventory_items.each do |inventory_item| %>
-      <tr>
+      <tr class="success<%#= @row_colors. %>">
+         <td><%= inventory_item.id %></td>
         <td><%= inventory_item.name %></td>
-        <td><%= inventory_item.description %></td>
         <td><%= inventory_item.costprice %></td>
         <td><%= inventory_item.saleprice %></td>
         <td><%= inventory_item.cdate %></td>
         <td><%= inventory_item.category.longname %></td>
-        <td><%= link_to t("views.links.btn.show"), inventory_item_path(inventory_item), class: "btn btn-default" %></td>
-        <td><%= link_to t("views.links.btn.edit"), edit_inventory_item_path(inventory_item), class: "btn btn-success" %></td>
+        <td><center><%= link_to t("views.links.btn.load"), "", class: "btn btn-warning" %></center></td>
+        <td><center><%= link_to t("views.links.btn.sale"), "", class: "btn btn-primary" %></center></td>        
+        <td><center><%= link_to t("views.links.btn.edit"), edit_inventory_item_path(inventory_item), class: "btn btn-success" %></center></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>

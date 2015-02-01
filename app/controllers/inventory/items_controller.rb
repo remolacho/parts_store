@@ -3,7 +3,11 @@ class Inventory::ItemsController < ApplicationController
 
   # GET /inventory/items
   def index
-    @inventory_items =Item.includes(:category).all
+    begin
+      @inventory_items = Item.includes(:category).all
+    rescue Exception => e
+      @inventory_items = Item.includes(:category).all
+    end
   end
 
   # GET /inventory/items/1

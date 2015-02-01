@@ -3,12 +3,16 @@
 <head>
   <title>PartsStore</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'scaffolds', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <header  class="ps-header">
+    <%= image_tag("logo1.jpg", size: "500x100") %>
+  </header>
+  <div class="col-xs-12">
+    <%= yield %>
+  </div>
 </body>
 </html>
