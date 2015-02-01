@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  root "main/app#index"
+  namespace :inventory do
+    resources :items
+  end
+
+  root "inventory/items#index"
 
   namespace :main do
   get 'app/index'

@@ -21,3 +21,31 @@
 
 en:
   hello: "Hello world"
+  views:
+    links:
+      btn:
+        show:     "Detalle"
+        edit:     "Editar"
+        back:     "Atras"
+        new:      "Nuevo"
+        destroy:  "Borrar"
+        save:     "Salvar"
+        update:   "Actualizar"
+        new_item: "Crear un nuevo articulo"
+    titles:
+      inventory:
+        item:
+          edit:  "Editar Articulo"
+          index: "Lista de Articulos"
+          new:   "Crear Articulo"
+          show:  "Detalle del Articulo" 
+    fields:
+      inventory:
+        item:
+          name:        "Nombre del articulo"
+          description: "Descripcion"
+          costprice:   "Precio de compra"
+          saleprice:   "Precio a la venta"
+          cdate:       "Fecha creacion"
+          category:    "Categoria"
+          status:      "Estado en el sistema"

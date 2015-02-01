@@ -1,0 +1,7 @@
+<h1><%= t("views.titles.inventory.item.edit") %></h1>
+<%= form_for(@inventory_item, url:  inventory_item_path(@inventory_item), method: :put) do |f| %>
+<%= render partial: 'form', locals: {obj: f} %>
+<%= link_to t("views.links.btn.show"),  inventory_item_path(@inventory_item), class: "btn btn-default" %> 
+<%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
+<% end %>
+

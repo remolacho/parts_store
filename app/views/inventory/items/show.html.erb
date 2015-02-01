@@ -1,0 +1,40 @@
+<h1><%= t("views.titles.inventory.item.show") %></h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t("views.fields.inventory.item.name") %>:</strong>
+  <%= @inventory_item.name %>
+</p>
+
+<p>
+  <strong><%= t("views.fields.inventory.item.description") %>:</strong>
+  <%= @inventory_item.description %>
+</p>
+
+<p>
+  <strong><%= t("views.fields.inventory.item.costprice") %>:</strong>
+  <%= @inventory_item.costprice %>
+</p>
+
+<p>
+  <strong><%= t("views.fields.inventory.item.saleprice") %>:</strong>
+  <%= @inventory_item.saleprice %>
+</p>
+
+<p>
+  <strong><%= t("views.fields.inventory.item.status") %>:</strong>
+  <%= @inventory_item.status %>
+</p>
+
+<p>
+  <strong><%= t("views.fields.inventory.item.cdate") %>:</strong>
+  <%= @inventory_item.cdate %>
+</p>
+
+<p>
+  <strong><%= t("views.fields.inventory.item.category") %>:</strong>
+  <%= @inventory_item.category.longname %>
+</p>
+
+<%= link_to t("views.links.btn.edit"), edit_inventory_item_path(@inventory_item), class: "btn btn-success" %>
+<%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>

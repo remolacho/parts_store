@@ -1,0 +1,7 @@
+<h1><%= t("views.titles.inventory.item.new") %></h1>
+<%= form_for(@inventory_item , url:  inventory_items_path, method: :post ) do |f| %>
+<%= f.hidden_field :cdate, value: Time.now %>
+<%= render partial: 'form', locals: {obj: f} %>
+<%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
+<% end %>
+

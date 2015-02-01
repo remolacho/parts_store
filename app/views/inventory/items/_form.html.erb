@@ -1,0 +1,35 @@
+  <% if @inventory_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inventory_item.errors.count, "error") %> prohibited this inventory_item from being saved:</h2>
+
+      <ul>
+      <% @inventory_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= obj.label t("views.fields.inventory.item.name") %><br>
+    <%= obj.text_field :name %>
+  </div>
+  <div class="field">
+    <%= obj.label t("views.fields.inventory.item.description") %><br>
+    <%= obj.text_area :description %>
+  </div>
+  <div class="field">
+    <%= obj.label  t("views.fields.inventory.item.costprice") %><br>
+    <%= obj.number_field :costprice %>
+  </div>
+  <div class="field">
+    <%= obj.label  t("views.fields.inventory.item.saleprice") %><br>
+    <%= obj.number_field :saleprice %>
+  </div>
+  <div class="field">
+    <%= obj.label  t("views.fields.inventory.item.category") %><br>
+    <%= obj.text_field :category_id %>
+  </div>
+  </br>
+  <%= obj.submit t("views.links.btn.save"), class: "btn btn-primary" %>
+
