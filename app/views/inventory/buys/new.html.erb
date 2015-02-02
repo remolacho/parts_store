@@ -1,2 +1,6 @@
-<h1>Inventory::Buys#new</h1>
-<p>Find me in app/views/inventory/buys/new.html.erb</p>
+<center><h3><%= "#{t('views.titles.inventory.buy.new')} #{@inventory_item.name}" %></h3></center>
+<%= form_for(@inventory_buy , url:   inventory_buys_path, method: :post ) do |f| %>
+<%= f.hidden_field :cdate, value: Time.now %>
+<%= f.hidden_field :item_id, value: @inventory_item.id %>
+<%= render partial: 'form', locals: {obj: f} %>
+<% end %>

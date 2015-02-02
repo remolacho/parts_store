@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   
   namespace :inventory do
     resources :items do
-      resources :buys, only: [:show,:new,:create]
+      resources :buys, only: [:new]
     end
-    resources :buys, only: [:index]
+    resources :buys, only: [:index, :create, :show]
   end
 
   root "inventory/items#index"

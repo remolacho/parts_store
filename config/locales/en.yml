@@ -20,21 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   views:
     links:
       btn:
-        show:     "Detalle"
-        edit:     "Editar"
-        back:     "Atras"
-        new:      "Nuevo"
-        destroy:  "Borrar"
-        save:     "Salvar"
-        update:   "Actualizar"
-        load:     "Cargar Compra"
-        sale:     "Hacer Venta"
-        new_item: "Crear un nuevo articulo"
-        search:   "Filtrar"
+        show:        "Detalle"
+        edit:        "Editar"
+        back:        "Atras"
+        new:         "Nuevo"
+        destroy:     "Borrar"
+        save:        "Salvar"
+        update:      "Actualizar"
+        load:        "Cargar Compra"
+        sale:        "Hacer Venta"
+        new_item:    "Crear un nuevo articulo"
+        search:      "Filtrar"
         filtro_item: "Filtrar Articulos Ver/Ocultar"
         delete_sale: "Anular venta del dia"
     titles:
@@ -44,6 +43,10 @@ en:
           index: "Lista de Articulos"
           new:   "Crear Articulo"
           show:  "Detalle del Articulo"
+        buy:
+          new:   "Cargar compra a"
+          index: "Listado de compras"
+          show:  "Detalle de la compra"
     fields:
       inventory:
         item:
@@ -55,6 +58,12 @@ en:
           category:    "Categoria"
           status:      "Estado en el sistema"
           actions:     "Acciones a tomar"
+        buy:
+          description:  "Descripcion"
+          quantity:     "Cantidad"
+          buyprice:     "Precio de compra"
+          status:       "Estado en el sistema"
+          cdate:        "Fecha creacion"
   controllers:
     actions:
       message:
@@ -72,3 +81,9 @@ en:
           alone_numbers:      "Se deben ingresar solo numeros para los campos precio de costo y precio de venta"
           greater_costprice:  "Precio de costo no puede ser menor a 100 Bsf."
           greater_saleprice:  "Precio de venta no puede ser menor a 100 Bsf."
+      buy:
+        messages:
+          presence_item:      "La compra debe pertenecer a un articulo"
+          alone_numbers:      "Se deben ingresar solo numeros para los campos precio de compra y cantidad"
+          greater_buyprice:   "Precio de compra no puede ser menor a 100 Bsf."
+          greater_quantity:   "La cantidad a ingresar debe ser mayor a 0"
