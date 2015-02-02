@@ -20,7 +20,7 @@
         <td><%= inventory_item.saleprice %></td>
         <td><%= inventory_item.cdate %></td>
         <td><%= inventory_item.category.longname %></td>
-        <td><center><%= link_to t("views.links.btn.load"), "", class: "btn btn-warning" %></center></td>
+        <td><center><%= link_to t("views.links.btn.load"), new_inventory_item_buy_path(inventory_item), class: "btn btn-warning" %></center></td>
         <td><center><%= link_to t("views.links.btn.sale"), "", class: "btn btn-primary" %></center></td>        
         <td><center><%= link_to t("views.links.btn.edit"), edit_inventory_item_path(inventory_item), class: "btn btn-success" %></center></td>
       </tr>

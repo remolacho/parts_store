@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150201003048) do
+ActiveRecord::Schema.define(version: 20150202035101) do
+
+  create_table "buys", force: true do |t|
+    t.integer  "item_id",                             null: false
+    t.text     "description"
+    t.integer  "quantity",              default: 0
+    t.float    "buyprice",              default: 0.0, null: false
+    t.string   "status",      limit: 1, default: "A", null: false
+    t.date     "cdate",                               null: false
+    t.integer  "created_by",            default: 0,   null: false
+    t.integer  "updated_by",            default: 0,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "buys", ["item_id"], name: "index_buys_on_item_id"
 
   create_table "categories", force: true do |t|
     t.string   "longname",   limit: 50,               null: false
