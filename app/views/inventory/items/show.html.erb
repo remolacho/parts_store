@@ -1,40 +1,63 @@
-<h3><%= t("views.titles.inventory.item.show") %></h3>
-<p id="notice"><%= notice %></p>
+<center><h3><%= t("views.titles.inventory.item.show") %></h3></center>
 
-<p>
-  <strong><%= t("views.fields.inventory.item.name") %>:</strong>
-  <%= @inventory_item.name %>
-</p>
+<div class= "col-xs-3"></div>
 
-<p>
-  <strong><%= t("views.fields.inventory.item.description") %>:</strong>
-  <%= @inventory_item.description %>
-</p>
+<div class= "col-xs-6">
 
-<p>
-  <strong><%= t("views.fields.inventory.item.costprice") %>:</strong>
-  <%= @inventory_item.costprice %>
-</p>
+  <div class= "row">
+    <%= render partial: "/shared/flash" %>
+  </div>
+  
+  <div class= "row well">
+    <p>
+     <strong><%= t("views.fields.inventory.item.name") %>:</strong>
+     <%= @inventory_item.name %>
+    </p>
+  </div>
 
-<p>
-  <strong><%= t("views.fields.inventory.item.saleprice") %>:</strong>
-  <%= @inventory_item.saleprice %>
-</p>
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.description") %>:</strong>
+      <%= @inventory_item.description %>
+    </p>
+  </div>
 
-<p>
-  <strong><%= t("views.fields.inventory.item.status") %>:</strong>
-  <%= @inventory_item.status %>
-</p>
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.costprice") %>:</strong>
+      <%= @inventory_item.costprice %>
+    </p>
+  </div>
+  
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.saleprice") %>:</strong>
+      <%= @inventory_item.saleprice %>
+    </p>
+  </div>
+  
+  <div class= "row well">
+   <p>
+     <strong><%= t("views.fields.inventory.item.status") %>:</strong>
+     <%= @inventory_item.status %>
+   </p>
+  </div>
 
-<p>
-  <strong><%= t("views.fields.inventory.item.cdate") %>:</strong>
-  <%= @inventory_item.cdate %>
-</p>
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.cdate") %>:</strong>
+      <%= @inventory_item.cdate %>
+    </p>
+  </div>
 
-<p>
-  <strong><%= t("views.fields.inventory.item.category") %>:</strong>
-  <%= @inventory_item.category.longname %>
-</p>
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.category") %>:</strong>
+      <%= @inventory_item.category.longname %>
+    </p>
+  </div>
 
-<%= link_to t("views.links.btn.edit"), edit_inventory_item_path(@inventory_item), class: "btn btn-success" %>
-<%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
+  <%= link_to t("views.links.btn.edit"), edit_inventory_item_path(@inventory_item), class: "btn btn-success" %>
+  <%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
+
+</div>

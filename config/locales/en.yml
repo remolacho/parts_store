@@ -34,13 +34,16 @@ en:
         load:     "Cargar Compra"
         sale:     "Hacer Venta"
         new_item: "Crear un nuevo articulo"
+        search:   "Filtrar"
+        filtro_item: "Filtrar Articulos Ver/Ocultar"
+        delete_sale: "Anular venta del dia"
     titles:
       inventory:
         item:
           edit:  "Editar Articulo"
           index: "Lista de Articulos"
           new:   "Crear Articulo"
-          show:  "Detalle del Articulo" 
+          show:  "Detalle del Articulo"
     fields:
       inventory:
         item:
@@ -52,3 +55,20 @@ en:
           category:    "Categoria"
           status:      "Estado en el sistema"
           actions:     "Acciones a tomar"
+  controllers:
+    actions:
+      message:
+        save:       "Se almaceno con exito"
+        update:     "Se actualizo con exito"
+        err_save:   "No se puede almacenar por favor intente de nuevo"
+        err_update: "No se puede actualizar por favor intente de nuevo"
+  models:
+    inventory:
+      item:
+        messages:
+          presence_name:      "Cada articulo debe tener un nombre el campo no puede estar vacio"
+          presence_category:  "El articulo debe pertenecer a una categoria"
+          unique_name:        "El nombre del producto ya existe"
+          alone_numbers:      "Se deben ingresar solo numeros para los campos precio de costo y precio de venta"
+          greater_costprice:  "Precio de costo no puede ser menor a 100 Bsf."
+          greater_saleprice:  "Precio de venta no puede ser menor a 100 Bsf."

@@ -1,34 +1,33 @@
-<h1><%= link_to t("views.links.btn.new_item"), new_inventory_item_path, class: "btn btn-primary" %></h1>
+<%= render partial: "/shared/flash" %>
 <h3><%= t("views.titles.inventory.item.index") %></h3>
-<div class="table-responsive">
-<table class="table table-hover" border=1>
-  <thead>
-    <tr class="danger<%#= @row_colors. %>">
-      <th>#</th>
-      <th><%= t("views.fields.inventory.item.name") %></th>
-      <th><%= t("views.fields.inventory.item.costprice") %></th>
-      <th><%= t("views.fields.inventory.item.saleprice") %></th>
-      <th><%= t("views.fields.inventory.item.cdate") %></th>
-      <th><%= t("views.fields.inventory.item.category") %></th>
-      <th colspan="4"><center><%= t("views.fields.inventory.item.actions") %></center></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @inventory_items.each do |inventory_item| %>
-      <tr class="success<%#= @row_colors. %>">
-         <td><%= inventory_item.id %></td>
-        <td><%= inventory_item.name %></td>
-        <td><%= inventory_item.costprice %></td>
-        <td><%= inventory_item.saleprice %></td>
-        <td><%= inventory_item.cdate %></td>
-        <td><%= inventory_item.category.longname %></td>
-        <td><center><%= link_to t("views.links.btn.load"), "", class: "btn btn-warning" %></center></td>
-        <td><center><%= link_to t("views.links.btn.sale"), "", class: "btn btn-primary" %></center></td>        
-        <td><center><%= link_to t("views.links.btn.edit"), edit_inventory_item_path(inventory_item), class: "btn btn-success" %></center></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<p>
+<%= link_to t("views.links.btn.filtro_item"), "#formSearch", class: "btn btn-success", id: "filterItem" %>
+<%= link_to t("views.links.btn.new_item"), new_inventory_item_path, class: "btn btn-primary" %>
+<%= link_to t("views.links.btn.delete_sale"), "#", class: "btn btn-danger" %>
+</p>
+<div id="formSearch">
+  <%= search_form_for @search, url:  inventory_items_path , remote: :true, id: "formSearchItem" do |f| %>
+    <div class="row well">
+      <div class="form-group col-xs-2">
+        <%= f.label  t("views.fields.inventory.item.category") %>
+        <%= f.select :category_id_eq, options_for_select(Category.all.collect{ |c| [c.longname, c.id] }), {include_blank: t('s.v.f.choose')} , {class: 'form-control', id: "categories" } %>
+      </div>
+      <div class="form-group col-xs-3">
+        <%= f.label :name_cont, t("views.fields.inventory.item.name") %>
+        <%= f.text_field :name_cont, class: "form-control" %>
+      </div>
+      <div class="form-group col-xs-4">
+         <%= f.label ".", "." %></br>
+         <%= f.submit I18n.t("views.links.btn.search"), class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div id="load">
+  <%= render partial: "/shared/msg_load" %>
+</div>
+<div class="table-responsive" id="items">
+  <%= render partial: "items" %>
 </div>
 <br>
+  <%= javascript_include_tag 'inventory/items', 'data-turbolinks-track' => true %>

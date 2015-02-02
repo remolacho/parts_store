@@ -3,11 +3,20 @@ class Inventory::ItemsController < ApplicationController
 
   # GET /inventory/items
   def index
+    
     begin
-      @inventory_items = Item.includes(:category).all
+      @search =  Item.includes(:category).all.search(params[:q])
+      @inventory_items = @search.result
     rescue Exception => e
-      @inventory_items = Item.includes(:category).all
+      @search =  Item.includes(:category).all.search(params[:q])
+      @inventory_items = @search.result
     end
+    
+    respond_to do |format|
+      format.html { render :index}
+      format.js { render :index }
+    end
+
   end
 
   # GET /inventory/items/1
@@ -16,11 +25,22 @@ class Inventory::ItemsController < ApplicationController
 
   # GET /inventory/items/new
   def new
-    @inventory_item = Item.new
+    begin
+      @inventory_item = Item.new
+      @categories = Category.all
+    rescue Exception => e
+      @inventory_item = Item.new
+      @categories = Category.all
+    end
   end
 
   # GET /inventory/items/1/edit
   def edit
+    begin
+      @categories = Category.all
+    rescue Exception => e
+      @categories = Category.all
+    end
   end
 
   # POST /inventory/items
@@ -28,39 +48,39 @@ class Inventory::ItemsController < ApplicationController
 
     @inventory_item = Item.new(inventory_item_params)
 
-    respond_to do |format|
-      if @inventory_item.save
-        format.html { redirect_to inventory_items_path, notice: 'Item was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @inventory_item.add(nil)
+      redirect_to inventory_items_path, flash: { alert: I18n.t("controllers.actions.message.save") }
+    else
+      flash[:error] = I18n.t("controllers.actions.message.err_save") 
+      @categories = Category.all
+      render :new 
     end
 
   end
 
   # PATCH/PUT /inventory/items/1
   def update
-    respond_to do |format|
-      if @inventory_item.update(inventory_item_params)
-        format.html { redirect_to inventory_item_path @inventory_item, notice: 'Item was successfully updated.' }
+      if @inventory_item.change(inventory_item_params, nil)
+        redirect_to inventory_item_path(@inventory_item), flash: { alert: I18n.t("controllers.actions.message.update") }
       else
-        format.html { render :edit }
+        flash[:error] = I18n.t("controllers.actions.message.err_update")
+        @categories = Category.all
+        render :edit
       end
-    end
   end
 
   # DELETE /inventory/items/1
   def destroy
-    @inventory_item.destroy
-    respond_to do |format|
-      format.html { redirect_to inventory_items_path, notice: 'Item was successfully destroyed.' }
-    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_inventory_item
-      @inventory_item = Item.find(params[:id])
+      begin
+        @inventory_item = Item.find(params[:id])
+      rescue Exception => e
+        @inventory_item = Item.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

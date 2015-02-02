@@ -50,3 +50,4 @@ gem 'kaminari'
 gem 'ransack'
 
 gem 'pry-rails', :group => :development
+gem 'haml'

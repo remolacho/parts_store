@@ -8,3 +8,4 @@
 
 
 Category.create(longname: "test1", shortname: "tes1")
+Category.create(longname: "test2", shortname: "tes2")

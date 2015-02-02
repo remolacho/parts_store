@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20150201003048) do
     t.string   "longname",   limit: 50,               null: false
     t.string   "shortname",  limit: 5,                null: false
     t.string   "status",     limit: 1,  default: "A", null: false
+    t.integer  "created_by",            default: 0,   null: false
+    t.integer  "updated_by",            default: 0,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,6 +31,8 @@ ActiveRecord::Schema.define(version: 20150201003048) do
     t.float    "saleprice",              default: 0.0, null: false
     t.string   "status",      limit: 1,  default: "A", null: false
     t.date     "cdate",                                null: false
+    t.integer  "created_by",             default: 0,   null: false
+    t.integer  "updated_by",             default: 0,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
