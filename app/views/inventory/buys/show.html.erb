@@ -8,4 +8,73 @@
     <%= render partial: "/shared/flash" %>
   </div>
   
+  <div class= "row well">
+    <p>
+     <strong><%= t("views.fields.inventory.item.category") %>:</strong>
+     <%= @inventory_item.category.longname %>
+    </p>
+    <p>
+     <strong><%= t("views.fields.inventory.item.name") %>:</strong>
+     <%= @inventory_item.name %>
+    </p>
+  </div>
+
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.buy.quantity") %>:</strong>
+      <%= @inventory_buy.quantity %>
+    </p>
+    <p>
+      <strong><%= t("views.fields.inventory.buy.buyprice") %>:</strong>
+      <%= @inventory_buy.buyprice %>
+    </p>
+  </div>
+
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.buy.status") %>:</strong>
+      <%= @inventory_buy.status %>
+    </p>
+
+    <p>
+      <strong><%= t("views.fields.inventory.buy.cdate_on") %>:</strong>
+      <%= @inventory_buy.cdate_on %>
+    </p>
+  
+    <p>
+      <strong><%= t("views.fields.inventory.buy.description") %>:</strong>
+      <%= @inventory_buy.description %>
+    </p>
+   </div>
+   <center><h3><%= t("views.titles.inventory.stock.show") %></h3></center>
+   <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.stock.status") %>:</strong>
+      <%= @inventory_stock.status %>
+    </p>
+
+    <p>
+      <strong><%= t("views.fields.inventory.stock.cdate_on") %>:</strong>
+      <%= @inventory_stock.cdate_on %>
+    </p>
+
+    <p>
+      <strong><%= t("views.fields.inventory.stock.existence_back") %>:</strong>
+      <%= @inventory_stock.existence_back %>
+    </p>
+
+    <p>
+      <strong><%= t("views.fields.inventory.stock.udate_on") %>:</strong>
+      <%= @inventory_stock.cdate_on %>
+    </p>
+
+    <p>
+      <strong><%= t("views.fields.inventory.stock.existence") %>:</strong>
+      <%= @inventory_stock.existence %>
+    </p>
+  </div>
+
+
+  <%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
+
 </div>

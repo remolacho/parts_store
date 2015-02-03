@@ -2,7 +2,8 @@ class Item < ActiveRecord::Base
 	include Audit
 	
 	belongs_to :category
-    has_many :buys
+    has_many :buys , dependent: :destroy
+    has_many :stocks, dependent: :destroy
     
 	validates_presence_of       :name, message: I18n.t('models.inventory.item.messages.presence_name')
 	validates_presence_of       :category_id, message: I18n.t('models.inventory.item.messages.presence_category')

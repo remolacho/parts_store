@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202035101) do
+ActiveRecord::Schema.define(version: 20150203000416) do
 
   create_table "buys", force: true do |t|
     t.integer  "item_id",                             null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150202035101) do
     t.integer  "quantity",              default: 0
     t.float    "buyprice",              default: 0.0, null: false
     t.string   "status",      limit: 1, default: "A", null: false
-    t.date     "cdate",                               null: false
+    t.date     "cdate_on",                            null: false
     t.integer  "created_by",            default: 0,   null: false
     t.integer  "updated_by",            default: 0,   null: false
     t.datetime "created_at"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150202035101) do
     t.float    "costprice",              default: 0.0, null: false
     t.float    "saleprice",              default: 0.0, null: false
     t.string   "status",      limit: 1,  default: "A", null: false
-    t.date     "cdate",                                null: false
+    t.date     "cdate_on",                             null: false
     t.integer  "created_by",             default: 0,   null: false
     t.integer  "updated_by",             default: 0,   null: false
     t.datetime "created_at"
@@ -53,5 +53,20 @@ ActiveRecord::Schema.define(version: 20150202035101) do
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id"
+
+  create_table "stocks", force: true do |t|
+    t.integer  "item_id",                                null: false
+    t.integer  "existence",                default: 0,   null: false
+    t.integer  "existence_back",           default: 0,   null: false
+    t.string   "status",         limit: 1, default: "A", null: false
+    t.date     "cdate_on",                               null: false
+    t.date     "udate_on",                               null: false
+    t.integer  "created_by",               default: 0,   null: false
+    t.integer  "updated_by",               default: 0,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stocks", ["item_id"], name: "index_stocks_on_item_id"
 
 end

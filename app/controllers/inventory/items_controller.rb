@@ -5,10 +5,10 @@ class Inventory::ItemsController < ApplicationController
   def index
     
     begin
-      @search =  Item.includes(:category).all.search(params[:q])
+      @search =  Item.includes(:category, :stocks).all.search(params[:q])
       @inventory_items = @search.result
     rescue Exception => e
-      @search =  Item.includes(:category).all.search(params[:q])
+      @search =  Item.includes(:category, :stocks).all.search(params[:q])
       @inventory_items = @search.result
     end
     
@@ -85,6 +85,6 @@ class Inventory::ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inventory_item_params
-      params.require(:item).permit(:name, :description, :costprice, :saleprice, :status, :cdate, :category_id)
+      params.require(:item).permit(:name, :description, :costprice, :saleprice, :status, :cdate_on, :category_id)
     end
 end
