@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @inventory_sale.quantity %>
+</p>
+
+<p>
+  <strong>Cdate on:</strong>
+  <%= @inventory_sale.cdate_on %>
+</p>
+
+<%= link_to 'Edit', edit_inventory_sale_path(@inventory_sale) %> |
+<%= link_to 'Back', inventory_sales_path %>

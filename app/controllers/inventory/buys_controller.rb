@@ -20,7 +20,6 @@ class Inventory::BuysController < ApplicationController
     if @inventory_buy.add(nil)
       @inventory_buy.add_stock
       redirect_to inventory_buy_path(@inventory_buy), flash: { alert: I18n.t("controllers.actions.message.save") }
-    
     else
       flash[:error] = I18n.t("controllers.actions.message.err_save") 
       @inventory_item = Item.find(@inventory_buy.item_id)

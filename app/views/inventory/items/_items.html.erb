@@ -23,7 +23,7 @@
         <td><%= inventory_item.category.longname %></td>
         <td><%= inventory_item.stocks.empty? ? 0 : inventory_item.stocks.first.existence  %></td>
         <td><center><%= link_to t("views.links.btn.load"), new_inventory_item_buy_path(inventory_item), class: "btn btn-warning" %></center></td>
-        <td><center><%= link_to t("views.links.btn.sale"), "", class: "btn btn-primary" %></center></td>        
+        <td><center><%= link_to t("views.links.btn.sale"), new_inventory_item_sale_path(inventory_item), class: "btn btn-primary" %></center></td>        
         <td><center><%= link_to t("views.links.btn.edit"), edit_inventory_item_path(inventory_item), class: "btn btn-success" %></center></td>
       </tr>
     <% end %>

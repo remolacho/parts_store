@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203000416) do
+ActiveRecord::Schema.define(version: 20150203235435) do
 
   create_table "buys", force: true do |t|
     t.integer  "item_id",                             null: false
@@ -53,6 +53,20 @@ ActiveRecord::Schema.define(version: 20150203000416) do
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id"
+
+  create_table "sales", force: true do |t|
+    t.integer  "item_id",                            null: false
+    t.float    "amount",               default: 0.0
+    t.integer  "quantity",             default: 0
+    t.date     "cdate_on",                           null: false
+    t.string   "status",     limit: 1, default: "A", null: false
+    t.integer  "created_by",           default: 0,   null: false
+    t.integer  "updated_by",           default: 0,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sales", ["item_id"], name: "index_sales_on_item_id"
 
   create_table "stocks", force: true do |t|
     t.integer  "item_id",                                null: false

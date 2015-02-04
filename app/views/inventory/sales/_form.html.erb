@@ -1,0 +1,37 @@
+<%= form_for(@inventory_sale, url:  inventory_sales_path, method: :post) do |f| %>
+  <% if @inventory_sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inventory_sale.errors.count, "error") %> prohibited this inventory_sale from being saved:</h2>
+
+      <ul>
+      <% @inventory_sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+   <div class="field">
+     <%= f.label :quantity %><br>
+     <%= f.number_field :quantity, id: "txtquantity", autofocus: :true, placeholder: "0.0", value:"" %>
+   </div>  
+
+   <div class="field">
+     <%= f.label :sale_price %><br>
+     <%= text_field_tag "price", @inventory_item.saleprice, readonly: :true, id: "txtprice" %>
+   </div>
+
+   <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount, readonly: :true, id: "txtamount" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cdate_on %><br>
+    <%= f.text_field :cdate_on, readonly: :true, value: Time.now %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<%= javascript_include_tag 'inventory/sales', 'data-turbolinks-track' => true %>
