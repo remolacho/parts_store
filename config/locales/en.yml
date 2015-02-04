@@ -49,6 +49,10 @@ en:
           show:  "Detalle de la compra"
         stock:
           show:  "Detalle del inventario"
+        sale:
+          index: "Lista de las ventas del dia"
+          new:   "Generar venta para"
+          show:  "Detalle de la venta"
     fields:
       inventory:
         item:
@@ -109,9 +113,12 @@ en:
           alone_numbers:      "Se deben ingresar solo numeros para el campo existencia"
           greater_existence:  "La existencia no debe ser menor a 0"
       sale:
-         presence_amount:   "El monto no puede estar vacio"  
-         presence_quantity: "La venta debe tener almenos un articulo"
-         presence_item:     "La venta debe pertenecer a un articulo"
-         alone_numbers:     "Se deben ingresar solo numeros para los campos monto y cantidad"
-         greater_amount:    "El monto debe ser mayor a 100 Bsf"
-         greater_quantity:  "La venta debe tener almenos un articulo"
+        messages:
+          presence_amount:   "El monto no puede estar vacio"  
+          presence_quantity: "La venta debe tener almenos un articulo"
+          presence_item:     "La venta debe pertenecer a un articulo"
+          alone_numbers:     "Se deben ingresar solo numeros para los campos monto y cantidad"
+          greater_amount:    "El monto debe ser mayor a 100 Bsf"
+          greater_quantity:  "La venta debe tener almenos un articulo"
+          validate_stock:    "Tu inventario no puede quedar negativo"
+          exception:         "La cantidad fue enviada vacia o con algun caracter no valido"
