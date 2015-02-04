@@ -6,11 +6,9 @@ module Audit
      def add(audit)
 
        if audit then
-         self.created_by = audit.id
-         self.updated_by = audit.id
+         self.created_by = self.updated_by = audit.id
        else
-         self.created_by = 0
-         self.updated_by = 0
+         self.created_by = self.updated_by = 0
        end
 
        self.save

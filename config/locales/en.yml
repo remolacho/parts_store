@@ -47,6 +47,12 @@ en:
           new:   "Cargar compra a"
           index: "Listado de compras"
           show:  "Detalle de la compra"
+        stock:
+          show:  "Detalle del inventario"
+        sale:
+          index: "Lista de las ventas del dia"
+          new:   "Generar venta para"
+          show:  "Detalle de la venta"
     fields:
       inventory:
         item:
@@ -54,23 +60,36 @@ en:
           description: "Descripcion"
           costprice:   "Precio de compra"
           saleprice:   "Precio a la venta"
-          cdate:       "Fecha creacion"
+          cdate_on:    "Fecha creacion"
           category:    "Categoria"
-          status:      "Estado en el sistema"
+          status:      "Estatus en el sistema"
           actions:     "Acciones a tomar"
         buy:
           description:  "Descripcion"
-          quantity:     "Cantidad"
+          quantity:     "Unidades"
           buyprice:     "Precio de compra"
-          status:       "Estado en el sistema"
-          cdate:        "Fecha creacion"
+          status:       "Estatus en el sistema"
+          cdate_on:     "Fecha creacion"
+        stock:
+          existence:      "Existencia Actual"
+          existence_back: "Existencia anterior"
+          status:         "Estatus en el sistema"
+          cdate_on:       "Fecha creacion"
+          udate_on:       "Ultima carga"
+        sale:
+          amount:         "Monto de la venta"
+          quantity:       "Cantidad vendida"
+          cdate_on:       "Fecha de la venta"
+          status:         "Estatus en el sistema"
   controllers:
     actions:
       message:
-        save:       "Se almaceno con exito"
-        update:     "Se actualizo con exito"
-        err_save:   "No se puede almacenar por favor intente de nuevo"
-        err_update: "No se puede actualizar por favor intente de nuevo"
+        save:        "Se almaceno con exito"
+        update:      "Se actualizo con exito"
+        destroy:     "Se elimino con exito"
+        err_save:    "No se puede almacenar por favor intente de nuevo"
+        err_update:  "No se puede actualizar por favor intente de nuevo"
+        err_destroy: "No se puede eliminar por favor intente de nuevo"
   models:
     inventory:
       item:
@@ -87,3 +106,19 @@ en:
           alone_numbers:      "Se deben ingresar solo numeros para los campos precio de compra y cantidad"
           greater_buyprice:   "Precio de compra no puede ser menor a 100 Bsf."
           greater_quantity:   "La cantidad a ingresar debe ser mayor a 0"
+          less_quantity:      "La cantidad no puede exceder las 1000 unidades"
+      stock:
+        messages:
+          presence_item:      "El inventario del producto debe pertenecer a un articulo"
+          alone_numbers:      "Se deben ingresar solo numeros para el campo existencia"
+          greater_existence:  "La existencia no debe ser menor a 0"
+      sale:
+        messages:
+          presence_amount:   "El monto no puede estar vacio"  
+          presence_quantity: "La venta debe tener almenos un articulo"
+          presence_item:     "La venta debe pertenecer a un articulo"
+          alone_numbers:     "Se deben ingresar solo numeros para los campos monto y cantidad"
+          greater_amount:    "El monto debe ser mayor a 100 Bsf"
+          greater_quantity:  "La venta debe tener almenos un articulo"
+          validate_stock:    "Tu inventario no puede quedar negativo"
+          exception:         "La cantidad fue enviada vacia o con algun caracter no valido"

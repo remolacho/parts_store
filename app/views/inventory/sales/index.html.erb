@@ -1,0 +1,26 @@
+<h1>Listing inventory_sales</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Amount</th>
+      <th>Cdate on</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventory_sales.each do |inventory_sale| %>
+      <tr>
+        <td><%= inventory_sale.quantity %></td>
+        <td><%= inventory_sale.amount %></td>
+        <td><%= inventory_sale.cdate_on %></td>
+        <td><%= link_to 'Show', inventory_sale_path(inventory_sale) %></td>
+        <td><%= link_to 'Destroy', inventory_sale_path(inventory_sale), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

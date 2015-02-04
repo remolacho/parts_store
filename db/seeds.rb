@@ -7,5 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Category.create(longname: "test1", shortname: "tes1")
-Category.create(longname: "test2", shortname: "tes2")
+Category.create(longname: "Correas", shortname: "CORR")
+Category.create(longname: "Cascos", shortname: "CAS")
