@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
- 
+   <%= f.hidden_field :item_id,  value: @inventory_item.id %>
    <div class="field">
      <%= f.label :quantity %><br>
      <%= f.number_field :quantity, id: "txtquantity", autofocus: :true, placeholder: "0.0", value:"" %>
