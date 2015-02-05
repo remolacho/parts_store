@@ -35,4 +35,28 @@ public
      end
   end
 
+  def restore_stock
+     begin
+        inventory_stock = Stock.find_by(item_id: self.item_id)
+        inventory_stock.udate_on = Time.now
+        inventory_stock.existence_back = inventory_stock.existence
+        inventory_stock.existence += self.quantity
+        inventory_stock.alter(nil)  
+     rescue Exception => e
+        errors.add(:saleInStock, I18n.t('models.inventory.sale.messages.err_sale_stock')); false
+     end
+  end
+
+  def rollback_stock
+     begin
+        inventory_stock = Stock.find_by(item_id: self.item_id)
+        inventory_stock.udate_on = Time.now
+        inventory_stock.existence_back = inventory_stock.existence
+        inventory_stock.existence -= self.quantity
+        inventory_stock.alter(nil)  
+     rescue Exception => e
+        errors.add(:saleInStock, I18n.t('models.inventory.sale.messages.err_sale_stock')); false
+     end
+  end
+
 end

@@ -5,6 +5,7 @@
   <thead>
     <tr  class="active<%#= @row_colors. %>">
       <th>#</th>
+      <th><%= t("views.fields.inventory.item.name") %></th>
       <th><%= t("views.fields.inventory.sale.quantity") %></th>
       <th><%= t("views.fields.inventory.sale.amount")%></th>
       <th><%= t("views.fields.inventory.sale.created_at")%></th>
@@ -16,6 +17,7 @@
     <% @inventory_sales.each do |inventory_sale| %>
       <tr  class="success<%#= @row_colors. %>">
         <td><%= inventory_sale.id %></td>
+        <td><%= inventory_sale.item.name %></td>
         <td><%= inventory_sale.quantity %></td>
         <td><%= inventory_sale.amount %></td>
         <td><%= inventory_sale.created_at %></td>

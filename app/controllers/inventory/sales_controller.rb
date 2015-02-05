@@ -2,7 +2,7 @@ class Inventory::SalesController < ApplicationController
   before_action :set_inventory_sale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @inventory_sales = Sale.where(cdate_on: Time.new.strftime("%Y-%m-%d")).order(id: :desc)
+    @inventory_sales = Sale.includes(:item).where(cdate_on: Time.new.strftime("%Y-%m-%d")).order(id: :desc)
   end
 
   def show
@@ -40,8 +40,21 @@ class Inventory::SalesController < ApplicationController
   end
 
   def destroy
-    @inventory_sale.destroy
-    
+
+    if @inventory_sale.restore_stock
+  
+      begin
+        @inventory_sale.destroy
+        redirect_to inventory_sales_path, flash: { alert: I18n.t("controllers.actions.message.restore_stock") }
+      rescue Exception => e
+         @inventory_sale.rollback_stock
+         redirect_to inventory_sales_path, flash: { error: I18n.t("controllers.actions.message.err_restore_stock") }
+      end
+  
+    else
+      redirect_to inventory_sales_path, flash: { error: I18n.t("controllers.actions.message.err_restore_stock") }
+    end
+
   end
 
   private

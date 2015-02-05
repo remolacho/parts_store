@@ -92,6 +92,8 @@ en:
         err_save:    "No se puede almacenar por favor intente de nuevo"
         err_update:  "No se puede actualizar por favor intente de nuevo"
         err_destroy: "No se puede eliminar por favor intente de nuevo"
+        restore_stock:     "Se restaura el articulo(s) en el inventario con exito"
+        err_restore_stock: "Se produjo un error al intentar eliminar la venta intente de nuevo"
   models:
     inventory:
       item:
