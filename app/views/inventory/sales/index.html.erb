@@ -14,6 +14,7 @@
   </thead>
 
   <tbody>
+    <% total_sale = total_cost = total_gain = 0  %>
     <% @inventory_sales.each do |inventory_sale| %>
       <tr  class="success<%#= @row_colors. %>">
         <td><%= inventory_sale.id %></td>
@@ -24,9 +25,17 @@
         <td><%= link_to t("views.links.btn.show"), inventory_sale_path(inventory_sale), class: "btn btn-success" %></td>
         <td><%= link_to  t("views.links.btn.destroy"), inventory_sale_path(inventory_sale), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% total_cost += inventory_sale.item.costprice * inventory_sale.quantity %>
+      <% total_sale += inventory_sale.amount %>
     <% end %>
   </tbody>
 </table>
 </div>
+<div>
+   <p>total Costo:  <%= total_cost %></p>
+   <p>Total ventas: <%= total_sale %></p>
+   <p>Total Ganacia: <%= total_gain = total_sale - total_cost  %></p>
+</div>
+<%= link_to t("views.links.btn.close_daily"), "#", class: "btn btn-primary" %>
 <%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
 <br>

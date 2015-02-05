@@ -37,6 +37,7 @@ en:
         search:      "Filtrar"
         filtro_item: "Filtrar Articulos Ver/Ocultar"
         delete_sale: "Ventas del dia"
+        close_daily: "Cierre del dia"
     titles:
       inventory:
         item:
