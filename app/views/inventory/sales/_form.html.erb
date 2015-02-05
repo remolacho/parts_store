@@ -16,7 +16,7 @@
 
     <div class="form-group col-xs-6">
       <%= obj.label t("views.fields.inventory.stock.existence") %><br>
-      <%=text_field_tag "existence", @inventory_item.stocks.first.existence, readonly: :true, id: "txtexistence", class: "form-control" %>
+      <%= text_field_tag "existence", @inventory_item.stocks.first ? @inventory_item.stocks.first.existence : 0, readonly: :true, id: "txtexistence", class: "form-control" %>
     </div>
 
   </div>

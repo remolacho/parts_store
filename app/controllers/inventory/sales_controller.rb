@@ -2,10 +2,12 @@ class Inventory::SalesController < ApplicationController
   before_action :set_inventory_sale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @inventory_sales = Sale.all
+    @inventory_sales = Sale.where(cdate_on: Time.new.strftime("%Y-%m-%d")).order(id: :desc)
   end
 
   def show
+     @inventory_item = @inventory_sale.item
+     @inventory_stock = @inventory_item.stocks.first
   end
 
   def new
@@ -19,7 +21,13 @@ class Inventory::SalesController < ApplicationController
   def create
     @inventory_sale = Sale.new(inventory_sale_params)
     if @inventory_sale.add(nil)
-       redirect_to inventory_sale_path(@inventory_sale), flash: { alert: I18n.t("controllers.actions.message.save") }
+       if @inventory_sale.saleInStock
+         redirect_to inventory_sale_path(@inventory_sale), flash: { alert: I18n.t("controllers.actions.message.save") }
+       else
+          flash[:error] = I18n.t("controllers.actions.message.err_save") 
+          @inventory_item = Item.find(@inventory_sale.item_id)
+          render :new
+       end
     else
       flash[:error] = I18n.t("controllers.actions.message.err_save") 
       @inventory_item = Item.find(@inventory_sale.item_id)
