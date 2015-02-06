@@ -32,17 +32,16 @@
 </table>
 </div>
 <div>
-   <p><%= t("views.fields.inventory.close_daily.total_amount_costo") %>  <%= total_cost %></p>
-   <p><%= t("views.fields.inventory.close_daily.total_amount_sale") %>  <%= total_sale %></p>
-   <p><%= t("views.fields.inventory.close_daily.total_amount_gain") %>  <%= total_gain = total_sale - total_cost  %></p>
+   <p><b><%= t("views.fields.inventory.close_daily.total_amount_costo") %></b>  <%= total_cost %></p>
+   <p><b><%= t("views.fields.inventory.close_daily.total_amount_sale") %></b>  <%= total_sale %></p>
+   <p><b><%= t("views.fields.inventory.close_daily.total_amount_gain") %></b>  <%= total_gain = total_sale - total_cost  %></p>
 </div>
-<%= form_for(Dailyclosure.new, url:  inventory_sales_path, method: :post) do |f| %>
+<%= form_for(Dailyclosure.new, url: inventory_dailyclosures_path , method: :post) do |f| %>
   <%= f.hidden_field :total_amount_sale, value: total_sale %>
   <%= f.hidden_field :total_amount_costo, value: total_cost %>
   <%= f.hidden_field :total_amount_gain, value: total_gain %>
   <%= f.hidden_field :cdate_on, value: Time.now %>
-  <%= render partial: 'form', locals: {obj: f} %>
+  <%= f.submit t("views.links.btn.close_daily"), class: "btn btn-primary", data: {confirm: I18n.t('views.messages.inventory.close_daily')} %>
+  <%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
 <% end %>
-<%= link_to t("views.links.btn.close_daily"), "#", class: "btn btn-primary" %>
-<%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
 <br>

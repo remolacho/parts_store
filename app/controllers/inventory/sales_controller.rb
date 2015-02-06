@@ -1,6 +1,6 @@
 class Inventory::SalesController < ApplicationController
   before_action :set_inventory_sale, only: [:show, :edit, :update, :destroy]
-
+  before_action :validate_daily_close, only: [:create, :destroy, :new]
   def index
     @inventory_sales = Sale.includes(:item).where(cdate_on: Time.new.strftime("%Y-%m-%d")).order(id: :desc)
   end

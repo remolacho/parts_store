@@ -55,6 +55,9 @@ en:
           index: "Listado de ventas"
           new:   "Generar venta para"
           show:  "Detalle de la venta"
+    messages:
+      inventory:
+        close_daily: "Esta seguro de realizar el cierre"
     fields:
       inventory:
         item:
@@ -91,14 +94,16 @@ en:
   controllers:
     actions:
       message:
-        save:        "Se almaceno con exito"
-        update:      "Se actualizo con exito"
-        destroy:     "Se elimino con exito"
-        err_save:    "No se puede almacenar por favor intente de nuevo"
-        err_update:  "No se puede actualizar por favor intente de nuevo"
-        err_destroy: "No se puede eliminar por favor intente de nuevo"
+        save:              "Se almaceno con exito"
+        update:            "Se actualizo con exito"
+        destroy:           "Se elimino con exito"
+        err_save:          "No se puede almacenar por favor intente de nuevo"
+        err_update:        "No se puede actualizar por favor intente de nuevo"
+        err_destroy:       "No se puede eliminar por favor intente de nuevo"
         restore_stock:     "Se restaura el articulo(s) en el inventario con exito"
         err_restore_stock: "Se produjo un error al intentar eliminar la venta intente de nuevo"
+        err_daily_close:   "Se presento un problema con el cierre diario"
+        save_daily_close:  "Se realizo el cierre del dia no se procesaran mas ventas por hoy"
   models:
     inventory:
       item:
@@ -116,7 +121,7 @@ en:
           greater_buyprice:   "Precio de compra no puede ser menor a 100 Bsf."
           greater_quantity:   "La cantidad a ingresar debe ser mayor a 0"
           less_quantity:      "La cantidad no puede exceder las 1000 unidades"
-          err_sale_buy:    "Se produjo un error al ingresar en el inventario la compra no se pudo realizar por favor intentar de nuevo"
+          err_sale_buy:       "Se produjo un error al ingresar en el inventario la compra no se pudo realizar por favor intentar de nuevo"
       stock:
         messages:
           presence_item:      "El inventario del producto debe pertenecer a un articulo"
@@ -133,3 +138,6 @@ en:
           validate_stock:    "Tu inventario no puede quedar negativo"
           exception:         "La cantidad fue enviada vacia o con algun caracter no valido"
           err_sale_stock:    "Se produjo un error al descontar en el inventario la venta no se pudo realizar por favor intentar de nuevo"
+      dailyclosure:
+        messages:
+          err_daily_sales:   "No hay ventas efectuadas el dia de hoy"
