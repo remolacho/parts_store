@@ -84,6 +84,10 @@ en:
           cdate_on:       "Fecha de la venta"
           status:         "Estatus en el sistema"
           created_at:     "Fecha detallada"
+        close_daily:
+          total_amount_costo: "Total costo:"
+          total_amount_sale:  "Total venta:"
+          total_amount_gain:  "Total ganancia:"
   controllers:
     actions:
       message:

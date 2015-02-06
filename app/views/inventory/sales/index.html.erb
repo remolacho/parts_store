@@ -32,10 +32,17 @@
 </table>
 </div>
 <div>
-   <p>total Costo:  <%= total_cost %></p>
-   <p>Total ventas: <%= total_sale %></p>
-   <p>Total Ganacia: <%= total_gain = total_sale - total_cost  %></p>
+   <p><%= t("views.fields.inventory.close_daily.total_amount_costo") %>  <%= total_cost %></p>
+   <p><%= t("views.fields.inventory.close_daily.total_amount_sale") %>  <%= total_sale %></p>
+   <p><%= t("views.fields.inventory.close_daily.total_amount_gain") %>  <%= total_gain = total_sale - total_cost  %></p>
 </div>
+<%= form_for(Dailyclosure.new, url:  inventory_sales_path, method: :post) do |f| %>
+  <%= f.hidden_field :total_amount_sale, value: total_sale %>
+  <%= f.hidden_field :total_amount_costo, value: total_cost %>
+  <%= f.hidden_field :total_amount_gain, value: total_gain %>
+  <%= f.hidden_field :cdate_on, value: Time.now %>
+  <%= render partial: 'form', locals: {obj: f} %>
+<% end %>
 <%= link_to t("views.links.btn.close_daily"), "#", class: "btn btn-primary" %>
 <%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
 <br>
