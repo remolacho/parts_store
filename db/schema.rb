@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203235435) do
+ActiveRecord::Schema.define(version: 20150205031445) do
 
   create_table "buys", force: true do |t|
     t.integer  "item_id",                             null: false
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 20150203235435) do
     t.string   "status",     limit: 1,  default: "A", null: false
     t.integer  "created_by",            default: 0,   null: false
     t.integer  "updated_by",            default: 0,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dailyclosures", force: true do |t|
+    t.float    "total_amount_sale",            default: 0.0, null: false
+    t.float    "total_amount_costo",           default: 0.0, null: false
+    t.float    "total_amount_gain",            default: 0.0, null: false
+    t.date     "cdate_on",                                   null: false
+    t.string   "status",             limit: 1, default: "A", null: false
+    t.integer  "created_by",                   default: 0,   null: false
+    t.integer  "updated_by",                   default: 0,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

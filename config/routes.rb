@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     resources :buys, only:  [:index, :create, :show]
     resources :sales, only: [:index, :create, :show, :destroy]
+    resources :dailyclosures, only: [:index, :create, :new]
   end
 
   root "inventory/items#index"
