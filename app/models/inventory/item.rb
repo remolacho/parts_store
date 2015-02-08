@@ -1,6 +1,5 @@
 class Item < ActiveRecord::Base
 	include Audit
-	
 	  belongs_to :category
     has_many :buys , dependent: :destroy
     has_many :stocks, dependent: :destroy

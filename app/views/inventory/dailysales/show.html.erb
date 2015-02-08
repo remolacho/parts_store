@@ -23,7 +23,6 @@
         <td><%= inventory_sale.amount %></td>
         <td><%= inventory_sale.created_at %></td>
         <td><%= link_to t("views.links.btn.show"), inventory_sale_path(inventory_sale), class: "btn btn-success" %></td>
-        <td><%= link_to  t("views.links.btn.destroy"), inventory_sale_path(inventory_sale), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% total_cost += inventory_sale.item.costprice * inventory_sale.quantity %>
       <% total_sale += inventory_sale.amount %>
@@ -37,12 +36,12 @@
    <p><b><%= t("views.fields.inventory.close_daily.total_amount_gain") %></b>  <%= total_gain = total_sale - total_cost  %></p>
 </div>
 <%= form_for(Dailyclosure.new, url: inventory_dailyclosures_path , method: :post) do |f| %>
-  <%= f.hidden_field :dailysale_id, value: @inventory_sales.first.dailysale.id %>
+  <%= f.hidden_field :dailysale_id, value: @dailysale.id %>
   <%= f.hidden_field :total_amount_sale, value: total_sale %>
   <%= f.hidden_field :total_amount_costo, value: total_cost %>
   <%= f.hidden_field :total_amount_gain, value: total_gain %>
   <%= f.hidden_field :cdate_on, value: Time.now %>
   <%= f.submit t("views.links.btn.close_daily"), class: "btn btn-primary", data: {confirm: I18n.t('views.messages.inventory.close_daily')} %>
-  <%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
+  <%= link_to t("views.links.btn.return"), inventory_dailysales_path, class: "btn btn-warning" %>
 <% end %>
 <br>

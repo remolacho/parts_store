@@ -2,6 +2,7 @@ class CreateInventorySales < ActiveRecord::Migration
   def change
     create_table :sales do |t|
       t.references :item, index: true, null: false
+      t.references :dailysale, index: true,  null: false
       t.float   :amount, default: 0
       t.integer :quantity, default: 0
       t.date    :cdate_on, null: false

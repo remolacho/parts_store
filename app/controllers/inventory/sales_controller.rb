@@ -1,8 +1,10 @@
 class Inventory::SalesController < ApplicationController
   before_action :set_inventory_sale, only: [:show, :edit, :update, :destroy]
+  before_action :validate_not_close_daily, only: [:create, :destroy, :new]
   before_action :validate_daily_close, only: [:create, :destroy, :new]
+  
   def index
-    @inventory_sales = Sale.includes(:item).where(cdate_on: Time.new.strftime("%Y-%m-%d")).order(id: :desc)
+    @inventory_sales = Sale.includes(:item,:dailysale).where(cdate_on: Time.new.strftime("%Y-%m-%d")).order(id: :desc)
   end
 
   def show
@@ -13,6 +15,7 @@ class Inventory::SalesController < ApplicationController
   def new
     @inventory_sale = Sale.new
     @inventory_item = Item.find(params[:item_id])
+    @inventory_stock = @inventory_item.stocks.first
   end
 
   def edit
@@ -65,6 +68,6 @@ class Inventory::SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inventory_sale_params
-      params.require(:sale).permit(:quantity, :cdate_on, :amount, :item_id)
+      params.require(:sale).permit(:quantity, :cdate_on, :amount, :item_id, :dailysale_id)
     end
 end
