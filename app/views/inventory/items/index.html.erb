@@ -1,0 +1,32 @@
+<%= render partial: "/shared/flash" %>
+<h3><%= t("views.titles.inventory.item.index") %></h3>
+<p>
+<%= link_to t("views.links.btn.filtro_item"), "#formSearch", class: "btn btn-default", id: "filterItem" %>
+<%= render partial: "/shared/actions" %>
+</p>
+<div id="formSearch">
+  <%= search_form_for @search, url:  inventory_items_path , remote: :true, id: "formSearchItem" do |f| %>
+    <div class="row well">
+      <div class="form-group col-xs-2">
+        <%= f.label  t("views.fields.inventory.item.category") %>
+        <%= f.select :category_id_eq, options_for_select(Category.all.collect{ |c| [c.longname, c.id] }), {include_blank: t('s.v.f.choose')} , {class: 'form-control', id: "categories" } %>
+      </div>
+      <div class="form-group col-xs-3">
+        <%= f.label :name_cont, t("views.fields.inventory.item.name") %>
+        <%= f.text_field :name_cont, class: "form-control" %>
+      </div>
+      <div class="form-group col-xs-4">
+         <%= f.label ".", "." %></br>
+         <%= f.submit I18n.t("views.links.btn.search"), class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div id="psload">
+  <%= render partial: "/shared/msg_load" %>
+</div>
+<div class="table-responsive" id="items">
+  <%= render partial: "items" %>
+</div>
+<br>
+  <%= javascript_include_tag 'inventory/items', 'data-turbolinks-track' => true %>

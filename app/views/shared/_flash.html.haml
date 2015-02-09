@@ -1,0 +1,5 @@
+- flash.each do |type, msg|
+  %div{class: "alert #{notify(type)}"}
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+    = msg.html_safe
+- flash.clear

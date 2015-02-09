@@ -20,4 +20,151 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  views:
+    links:
+      btn:
+        show:         "Detalle"
+        edit:         "Editar"
+        back:         "Ir a inventario"
+        return:       "Volver"
+        new:          "Nuevo"
+        destroy:      "Eliminar"
+        save:         "Salvar"
+        update:       "Actualizar"
+        load:         "Cargar Compra"
+        sale:         "Hacer Venta"
+        new_item:     "Crear un nuevo articulo"
+        search:       "Filtrar"
+        filtro_item:  "Filtrar Articulos Ver/Ocultar"
+        delete_sale:  "Ventas del dia"
+        close_daily:  "Cierre del dia"
+        report_sales: "Reporte ventas diarias"
+        sign_in:      "Iniciar session"
+        forgot_your_password: "olvido su contraseña?"
+        send_me_reset_password_instructions: "Enviarme restablecimiento de contraseña"
+        change_my_password: "Cambiar contraseña"
+    titles:
+      inventory:
+        item:
+          edit:  "Editar Articulo"
+          index: "Lista de Articulos"
+          new:   "Crear Articulo"
+          show:  "Detalle del Articulo"
+        buy:
+          new:   "Cargar compra a"
+          index: "Listado de compras"
+          show:  "Detalle de la compra"
+        stock:
+          show:  "Detalle del inventario"
+        sale:
+          index: "Lista de ventas"
+          close: "Lista de ventas por cerrar"
+          new:   "Generar venta para"
+          show:  "Detalle de la venta"
+        close_daily:
+          index:  "Reporte de ventas"
+      access:
+        session:
+          new: "Iniciar session"
+        password:
+          new: "recuperar contraseña?"
+          edit: "Cambia tu contraseña"
+    messages:
+      inventory:
+        close_daily: "Esta seguro de realizar el cierre"
+    fields:
+      inventory:
+        item:
+          name:        "Nombre del articulo"
+          description: "Descripcion"
+          costprice:   "Precio de compra"
+          saleprice:   "Precio a la venta"
+          cdate_on:    "Fecha creacion"
+          category:    "Categoria"
+          status:      "Estatus en el sistema"
+          actions:     "Acciones a tomar"
+        buy:
+          description:  "Descripcion"
+          quantity:     "Unidades"
+          buyprice:     "Precio de compra"
+          status:       "Estatus en el sistema"
+          cdate_on:     "Fecha creacion"
+        stock:
+          existence:      "Existencia Actual"
+          existence_back: "Existencia anterior"
+          status:         "Estatus en el sistema"
+          cdate_on:       "Fecha creacion"
+          udate_on:       "Ultima carga"
+        sale:
+          amount:         "Monto de la venta"
+          quantity:       "Cantidad vendida"
+          cdate_on:       "Fecha de la venta"
+          status:         "Estatus en el sistema"
+          created_at:     "Fecha detallada"
+        close_daily:
+          total_amount_cost: "Total costo:"
+          total_amount_sale:  "Total venta:"
+          total_amount_gain:  "Total ganancia:"
+          to:                 "Hasta"
+          from:               "Desde"
+      devise:
+        session:
+          logout: "Cerrar session"
+          email:  "Correo"
+          password: "Contraseña"
+          remember_me: "recordar session"
+        password:
+          email:  "Correo"
+          new_pass: "Nueva contraseña"
+          conf_pass: "Confirmar nueva contraseña"
+  controllers:
+    actions:
+      message:
+        save:              "Se almaceno con exito"
+        update:            "Se actualizo con exito"
+        destroy:           "Se elimino con exito"
+        err_save:          "No se puede almacenar por favor intente de nuevo"
+        err_update:        "No se puede actualizar por favor intente de nuevo"
+        err_destroy:       "No se puede eliminar por favor intente de nuevo"
+        restore_stock:     "Se restaura el articulo(s) en el inventario con exito"
+        err_restore_stock: "Se produjo un error al intentar eliminar la venta intente de nuevo"
+        err_daily_close:   "Se presento un problema con el cierre diario"
+        save_daily_close:  "Se realizo el cierre del dia con exito"
+  models:
+    inventory:
+      item:
+        messages:
+          presence_name:      "Cada articulo debe tener un nombre el campo no puede estar vacio"
+          presence_category:  "El articulo debe pertenecer a una categoria"
+          unique_name:        "El nombre del producto ya existe"
+          alone_numbers:      "Se deben ingresar solo numeros para los campos precio de costo y precio de venta"
+          greater_costprice:  "Precio de costo no puede ser menor a 100 Bsf."
+          greater_saleprice:  "Precio de venta no puede ser menor a 100 Bsf."
+      buy:
+        messages:
+          presence_item:      "La compra debe pertenecer a un articulo"
+          alone_numbers:      "Se deben ingresar solo numeros para los campos precio de compra y cantidad"
+          greater_buyprice:   "Precio de compra no puede ser menor a 100 Bsf."
+          greater_quantity:   "La cantidad a ingresar debe ser mayor a 0"
+          less_quantity:      "La cantidad no puede exceder las 1000 unidades"
+          err_sale_buy:       "Se produjo un error al ingresar en el inventario la compra no se pudo realizar por favor intentar de nuevo"
+      stock:
+        messages:
+          presence_item:      "El inventario del producto debe pertenecer a un articulo"
+          alone_numbers:      "Se deben ingresar solo numeros para el campo existencia"
+          greater_existence:  "La existencia no debe ser menor a 0"
+      sale:
+        messages:
+          presence_amount:     "El monto no puede estar vacio"  
+          presence_quantity:   "La venta debe tener almenos un articulo"
+          presence_item:       "La venta debe pertenecer a un articulo"
+          alone_numbers:       "Se deben ingresar solo numeros para los campos monto y cantidad"
+          greater_amount:      "El monto debe ser mayor a 100 Bsf"
+          greater_quantity:    "La venta debe tener almenos un articulo"
+          validate_stock:      "Tu inventario no puede quedar negativo"
+          exception_stock:     "La cantidad se envio vacia o con algun caracter no valido"
+          exception_dailysale: "Se presentan problemas al crear o buscar las ventas del dia error:"
+          err_sale_stock:      "Se produjo un error al descontar en el inventario la venta no se pudo realizar por favor intentar de nuevo"
+      dailyclosure:
+        messages:
+          err_daily_sales:   "No hay ventas efectuadas el dia de hoy"

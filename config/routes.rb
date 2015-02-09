@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+
+  devise_for :users, skip: [:registrations]
+  
+  namespace :inventory do
+    resources :items do
+      resources :buys, only: [:new]
+      resources :sales, only: [:new]
+    end
+    resources :buys, only:  [:index, :create, :show]
+    resources :sales, only: [:index, :create, :show, :destroy]
+    resources :dailyclosures, only: [:index, :create, :new]
+    resources :dailysales, only: [:index,:show]
+  end
+
+  root "inventory/items#index"
+
+  namespace :main do
+  get 'app/index'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

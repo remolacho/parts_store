@@ -1,0 +1,31 @@
+<table class="table table-hover" border=1>
+  <thead>
+    <tr class="active<%#= @row_colors. %>">
+      <th>#</th>
+      <th><%= t("views.fields.inventory.item.name") %></th>
+      <th><%= t("views.fields.inventory.item.costprice") %></th>
+      <th><%= t("views.fields.inventory.item.saleprice") %></th>
+      <th><%= t("views.fields.inventory.item.cdate_on") %></th>
+      <th><%= t("views.fields.inventory.item.category") %></th>
+      <th><%= t("views.fields.inventory.stock.existence") %></th>
+      <th colspan="4"><center><%= t("views.fields.inventory.item.actions") %></center></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventory_items.each do |inventory_item| %>
+      <tr class="success<%#= @row_colors. %>">
+         <td><%= inventory_item.id %></td>
+         <td><%= inventory_item.name %></td>
+         <td><%= inventory_item.costprice %></td>
+         <td><%= inventory_item.saleprice %></td>
+         <td><%= inventory_item.cdate_on %></td>
+         <td><%= inventory_item.category.longname %></td>
+         <td><%= inventory_item.stocks.empty? ? 0 : inventory_item.stocks.first.existence  %></td>
+         <td><center><%= link_to t("views.links.btn.load"), new_inventory_item_buy_path(inventory_item), class: "btn btn-warning" %></center></td>
+         <td><center><%= link_to t("views.links.btn.sale"), new_inventory_item_sale_path(inventory_item), class: "btn btn-primary" %></center></td>        
+         <td><center><%= link_to t("views.links.btn.edit"), edit_inventory_item_path(inventory_item), class: "btn btn-success" %></center></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

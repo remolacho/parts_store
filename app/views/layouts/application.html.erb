@@ -3,12 +3,27 @@
 <head>
   <title>PartsStore</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'scaffolds', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <header class="ps-header">
+    
+    <div class="row">
+      <div class="col-md-10">
+        <%= image_tag("logo.jpg", size: "500x100") %>
+      </div>
+      <% if current_user %>
+        <div class="col-md-2 push-right well">
+          <%= link_to "#{t('views.fields.devise.session.logout')} #{current_user.firstname} #{current_user.lastname}", destroy_user_session_path, method: :delete %>
+        </div>  
+      <% end %>
+    </div>
+    
+  </header>
+  <div class="col-xs-12">
+    <%= yield %>
+  </div>
 </body>
 </html>

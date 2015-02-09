@@ -1,0 +1,65 @@
+<center><h3><%= t("views.titles.inventory.item.show") %></h3></center>
+<center><p>
+<%= render partial: "/shared/actions" %>
+</p></center>
+<div class= "col-xs-3"></div>
+
+<div class= "col-xs-6">
+
+  <div class= "row">
+    <%= render partial: "/shared/flash" %>
+  </div>
+  
+  <div class= "row well">
+    <p>
+     <strong><%= t("views.fields.inventory.item.name") %>:</strong>
+     <%= @inventory_item.name %>
+    </p>
+  </div>
+
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.description") %>:</strong>
+      <%= @inventory_item.description %>
+    </p>
+  </div>
+
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.costprice") %>:</strong>
+      <%= @inventory_item.costprice %>
+    </p>
+  </div>
+  
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.saleprice") %>:</strong>
+      <%= @inventory_item.saleprice %>
+    </p>
+  </div>
+  
+  <div class= "row well">
+   <p>
+     <strong><%= t("views.fields.inventory.item.status") %>:</strong>
+     <%= @inventory_item.status %>
+   </p>
+  </div>
+
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.cdate_on") %>:</strong>
+      <%= @inventory_item.cdate_on %>
+    </p>
+  </div>
+
+  <div class= "row well">
+    <p>
+      <strong><%= t("views.fields.inventory.item.category") %>:</strong>
+      <%= @inventory_item.category.longname %>
+    </p>
+  </div>
+
+  <%= link_to t("views.links.btn.edit"), edit_inventory_item_path(@inventory_item), class: "btn btn-success" %>
+  <%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
+
+</div>

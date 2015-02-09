@@ -1,0 +1,47 @@
+<%= render partial: "/shared/flash" %>
+<h3><%= t("views.titles.inventory.sale.index") %></h3>
+<div class="table-responsive" id="sales">
+<table  class="table table-hover" border=1>
+  <thead>
+    <tr  class="active<%#= @row_colors. %>">
+      <th>#</th>
+      <th><%= t("views.fields.inventory.item.name") %></th>
+      <th><%= t("views.fields.inventory.sale.quantity") %></th>
+      <th><%= t("views.fields.inventory.sale.amount")%></th>
+      <th><%= t("views.fields.inventory.sale.created_at")%></th>
+      <th colspan="2"><center><%= t("views.fields.inventory.item.actions") %></center></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% total_sale = total_cost = total_gain = 0  %>
+    <% @inventory_sales.each do |inventory_sale| %>
+      <tr  class="success<%#= @row_colors. %>">
+        <td><%= inventory_sale.id %></td>
+        <td><%= inventory_sale.item.name %></td>
+        <td><%= inventory_sale.quantity %></td>
+        <td><%= inventory_sale.amount %></td>
+        <td><%= inventory_sale.created_at %></td>
+        <td><%= link_to t("views.links.btn.show"), inventory_sale_path(inventory_sale), class: "btn btn-success" %></td>
+      </tr>
+      <% total_cost += inventory_sale.item.costprice * inventory_sale.quantity %>
+      <% total_sale += inventory_sale.amount %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div>
+   <p><b><%= t("views.fields.inventory.close_daily.total_amount_cost") %></b>  <%= total_cost %></p>
+   <p><b><%= t("views.fields.inventory.close_daily.total_amount_sale") %></b>  <%= total_sale %></p>
+   <p><b><%= t("views.fields.inventory.close_daily.total_amount_gain") %></b>  <%= total_gain = total_sale - total_cost  %></p>
+</div>
+<%= form_for(Dailyclosure.new, url: inventory_dailyclosures_path , method: :post) do |f| %>
+  <%= f.hidden_field :dailysale_id, value: @dailysale.id %>
+  <%= f.hidden_field :total_amount_sale, value: total_sale %>
+  <%= f.hidden_field :total_amount_cost, value: total_cost %>
+  <%= f.hidden_field :total_amount_gain, value: total_gain %>
+  <%= f.hidden_field :cdate_on, value: @dailysale.cdate_on %>
+  <%= f.submit t("views.links.btn.close_daily"), class: "btn btn-primary", data: {confirm: I18n.t('views.messages.inventory.close_daily')} %>
+  <%= link_to t("views.links.btn.return"), inventory_dailysales_path, class: "btn btn-warning" %>
+<% end %>
+<br>

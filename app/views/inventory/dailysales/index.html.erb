@@ -1,0 +1,31 @@
+<%= render partial: "/shared/flash" %>
+<h3><%= t("views.titles.inventory.sale.close") %></h3>
+<div class="table-responsive" id="sales">
+<table  class="table table-hover" border=1>
+  <thead>
+    <tr  class="active<%#= @row_colors. %>">
+      <th>#</th>
+      <th><%= t("views.fields.inventory.item.status") %></th>
+      <th><%= t("views.fields.inventory.sale.cdate_on")%></th>
+      <th colspan="2"><%= t("views.fields.inventory.item.actions") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @dailysales.each do |dailysale| %>
+      <tr  class="success<%#= @row_colors. %>">
+        <td><%= dailysale.id %></td>
+        <td><%= dailysale.status %></td>
+        <td><%= dailysale.cdate_on %></td>
+        <td><%= link_to t("views.links.btn.show"), inventory_dailysale_path(dailysale), class: "btn btn-success" %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+
+</table>
+
+</div>
+
+<br>

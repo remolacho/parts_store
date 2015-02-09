@@ -1,0 +1,9 @@
+<center><h3><%= t("views.titles.inventory.item.new") %></h3></center>
+<center><p>
+<%= render partial: "/shared/actions" %>
+</p></center>
+<%= form_for(@inventory_item , url:  inventory_items_path, method: :post ) do |f| %>
+<%= f.hidden_field :cdate_on, value: Time.now %>
+<%= render partial: 'form', locals: {obj: f} %>
+<% end %>
+

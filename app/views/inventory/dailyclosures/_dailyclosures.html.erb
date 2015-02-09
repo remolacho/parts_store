@@ -1,0 +1,22 @@
+<table class="table table-hover" border=1>
+  <thead>
+    <tr class="active<%#= @row_colors. %>">
+    <th>#</th>
+    <th><%= t("views.fields.inventory.close_daily.cdate_on") %></th>
+    <th><%= t("views.fields.inventory.close_daily.total_amount_cost") %></th>
+    <th><%= t("views.fields.inventory.close_daily.total_amount_sale") %></th>
+    <th><%= t("views.fields.inventory.close_daily.total_amount_gain") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inventory_dc.each do |dailyclosure| %>
+      <tr class="success<%#= @row_colors. %>">
+        <td><%= dailyclosure.id %></td>
+        <td><%= dailyclosure.cdate_on.strftime("%d/%m/%Y") %></td>
+        <td><%= dailyclosure.total_amount_cost %></td>
+        <td><%= dailyclosure.total_amount_sale %></td>
+        <td><%= dailyclosure.total_amount_gain %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

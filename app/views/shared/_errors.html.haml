@@ -1,0 +1,5 @@
+- object.errors.full_messages.each do |msg|
+  = succeed "" do
+    .alert.alert-danger{ class: "fade in" }
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"}×
+      = msg
