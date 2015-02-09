@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205031445) do
+ActiveRecord::Schema.define(version: 20150209155829) do
 
   create_table "buys", force: true do |t|
     t.integer  "item_id",                             null: false
@@ -78,6 +78,16 @@ ActiveRecord::Schema.define(version: 20150205031445) do
 
   add_index "items", ["category_id"], name: "index_items_on_category_id"
 
+  create_table "roles", force: true do |t|
+    t.string   "longname",   limit: 50,               null: false
+    t.string   "shortname",  limit: 5,                null: false
+    t.string   "status",     limit: 1,  default: "A", null: false
+    t.integer  "created_by",            default: 0,   null: false
+    t.integer  "updated_by",            default: 0,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sales", force: true do |t|
     t.integer  "item_id",                              null: false
     t.integer  "dailysale_id",                         null: false
@@ -108,5 +118,38 @@ ActiveRecord::Schema.define(version: 20150205031445) do
   end
 
   add_index "stocks", ["item_id"], name: "index_stocks_on_item_id"
+
+  create_table "users", force: true do |t|
+    t.integer  "role_id"
+    t.string   "firstname",              limit: 50,               null: false
+    t.string   "lastname",               limit: 50,               null: false
+    t.string   "usertag",                limit: 50,               null: false
+    t.string   "street_name",            limit: 50,               null: false
+    t.string   "street_num",             limit: 50,               null: false
+    t.string   "career_num",             limit: 50,               null: false
+    t.string   "home_num",               limit: 50,               null: false
+    t.string   "address",                limit: 150,              null: false
+    t.string   "mobile_phone",           limit: 14,               null: false
+    t.string   "home_phone",             limit: 14
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",                 default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "created_by",                         default: 0,  null: false
+    t.integer  "updated_by",                         default: 0,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["role_id"], name: "index_users_on_role_id"
+  add_index "users", ["usertag"], name: "index_users_on_usertag", unique: true
 
 end

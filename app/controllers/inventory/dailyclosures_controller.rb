@@ -1,5 +1,5 @@
 class Inventory::DailyclosuresController < ApplicationController
-  
+  before_action :authenticate_user!
   before_action :validate_daily_close, only: [:create]
 
   def index

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users, skip: [:registrations]
+  
   namespace :inventory do
     resources :items do
       resources :buys, only: [:new]

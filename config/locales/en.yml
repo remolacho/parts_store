@@ -39,6 +39,10 @@ en:
         delete_sale:  "Ventas del dia"
         close_daily:  "Cierre del dia"
         report_sales: "Reporte ventas diarias"
+        sign_in:      "Iniciar session"
+        forgot_your_password: "olvido su contraseña?"
+        send_me_reset_password_instructions: "Enviarme restablecimiento de contraseña"
+        change_my_password: "Cambiar contraseña"
     titles:
       inventory:
         item:
@@ -58,6 +62,12 @@ en:
           show:  "Detalle de la venta"
         close_daily:
           index:  "Reporte de ventas"
+      access:
+        session:
+          new: "Iniciar session"
+        password:
+          new: "recuperar contraseña?"
+          edit: "Cambia tu contraseña"
     messages:
       inventory:
         close_daily: "Esta seguro de realizar el cierre"
@@ -96,6 +106,16 @@ en:
           total_amount_gain:  "Total ganancia:"
           to:                 "Hasta"
           from:               "Desde"
+      devise:
+        session:
+          logout: "Cerrar session"
+          email:  "Correo"
+          password: "Contraseña"
+          remember_me: "recordar session"
+        password:
+          email:  "Correo"
+          new_pass: "Nueva contraseña"
+          conf_pass: "Confirmar nueva contraseña"
   controllers:
     actions:
       message:

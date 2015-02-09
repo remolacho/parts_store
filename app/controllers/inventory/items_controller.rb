@@ -1,4 +1,5 @@
 class Inventory::ItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_inventory_item, only: [:show, :edit, :update, :destroy]
   before_action :validate_not_close_daily, only: [:index]
   # GET /inventory/items

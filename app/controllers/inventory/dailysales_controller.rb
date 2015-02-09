@@ -1,4 +1,5 @@
 class Inventory::DailysalesController < ApplicationController
+  before_action :authenticate_user!
   def index
   	begin
   	  @dailysales = Dailysale.where(status: "A").less_date(Time.new.strftime("%Y-%m-%d"))

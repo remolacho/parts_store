@@ -53,3 +53,11 @@ gem 'ransack'
 gem 'pry-rails', :group => :development
 gem 'haml'
 
+#Authentication
+gem 'devise'
+
+#form
+gem 'simple_form'
+gem "cocoon"
+
+gem 'devise-bootstrap-views'

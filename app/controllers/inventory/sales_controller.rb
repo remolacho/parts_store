@@ -1,4 +1,5 @@
 class Inventory::SalesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_inventory_sale, only: [:show, :edit, :update, :destroy]
   before_action :validate_not_close_daily, only: [:create, :destroy, :new]
   before_action :validate_daily_close, only: [:create, :destroy, :new]
