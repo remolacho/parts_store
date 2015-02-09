@@ -49,7 +49,7 @@ class Inventory::ItemsController < ApplicationController
 
     @inventory_item = Item.new(inventory_item_params)
 
-    if @inventory_item.add(nil)
+    if @inventory_item.add(current_user)
       redirect_to inventory_items_path, flash: { alert: I18n.t("controllers.actions.message.save") }
     else
       flash[:error] = I18n.t("controllers.actions.message.err_save") 
@@ -61,7 +61,7 @@ class Inventory::ItemsController < ApplicationController
 
   # PATCH/PUT /inventory/items/1
   def update
-      if @inventory_item.change(inventory_item_params, nil)
+      if @inventory_item.change(inventory_item_params, current_user)
         redirect_to inventory_item_path(@inventory_item), flash: { alert: I18n.t("controllers.actions.message.update") }
       else
         flash[:error] = I18n.t("controllers.actions.message.err_update")

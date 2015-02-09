@@ -24,7 +24,7 @@ class Inventory::SalesController < ApplicationController
 
   def create
     @inventory_sale = Sale.new(inventory_sale_params)
-    if @inventory_sale.add(nil)
+    if @inventory_sale.add(current_user)
        if @inventory_sale.saleInStock
          redirect_to inventory_sale_path(@inventory_sale), flash: { alert: I18n.t("controllers.actions.message.save") }
        else

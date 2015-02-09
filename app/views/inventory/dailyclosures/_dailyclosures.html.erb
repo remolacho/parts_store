@@ -12,10 +12,10 @@
     <% @inventory_dc.each do |dailyclosure| %>
       <tr class="success<%#= @row_colors. %>">
         <td><%= dailyclosure.id %></td>
-        <td><%= dailyclosure.cdate_on %></td>
-        <td><%= dailyclosure.name %></td>
+        <td><%= dailyclosure.cdate_on.strftime("%d/%m/%Y") %></td>
+        <td><%= dailyclosure.total_amount_cost %></td>
         <td><%= dailyclosure.total_amount_sale %></td>
-        <td><%= dailyclosure.saleprice %></td>
+        <td><%= dailyclosure.total_amount_gain %></td>
       </tr>
     <% end %>
   </tbody>

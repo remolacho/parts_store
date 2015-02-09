@@ -19,7 +19,7 @@ class Inventory::BuysController < ApplicationController
 
     @inventory_buy = Buy.new(inventory_buy_params)
 
-    if @inventory_buy.add(nil)
+    if @inventory_buy.add(current_user)
       if @inventory_buy.add_stock
         redirect_to inventory_buy_path(@inventory_buy), flash: { alert: I18n.t("controllers.actions.message.save") }
       else
