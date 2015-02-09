@@ -41,6 +41,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 #gemas para el diseño
 gem 'bootstrap-sass'
+gem 'bootstrap-datepicker-rails'
 #gem 'therubyracer'
 #gem 'therubyrhino'
 #gem 'ruby-nodejs', '~> 0.0.1'
@@ -51,3 +52,4 @@ gem 'ransack'
 
 gem 'pry-rails', :group => :development
 gem 'haml'
+

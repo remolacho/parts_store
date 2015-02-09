@@ -23,21 +23,22 @@ en:
   views:
     links:
       btn:
-        show:        "Detalle"
-        edit:        "Editar"
-        back:        "Ir a inventario"
-        return:      "Volver"
-        new:         "Nuevo"
-        destroy:     "Eliminar"
-        save:        "Salvar"
-        update:      "Actualizar"
-        load:        "Cargar Compra"
-        sale:        "Hacer Venta"
-        new_item:    "Crear un nuevo articulo"
-        search:      "Filtrar"
-        filtro_item: "Filtrar Articulos Ver/Ocultar"
-        delete_sale: "Ventas del dia"
-        close_daily: "Cierre del dia"
+        show:         "Detalle"
+        edit:         "Editar"
+        back:         "Ir a inventario"
+        return:       "Volver"
+        new:          "Nuevo"
+        destroy:      "Eliminar"
+        save:         "Salvar"
+        update:       "Actualizar"
+        load:         "Cargar Compra"
+        sale:         "Hacer Venta"
+        new_item:     "Crear un nuevo articulo"
+        search:       "Filtrar"
+        filtro_item:  "Filtrar Articulos Ver/Ocultar"
+        delete_sale:  "Ventas del dia"
+        close_daily:  "Cierre del dia"
+        report_sales: "Reporte ventas diarias"
     titles:
       inventory:
         item:
@@ -55,6 +56,8 @@ en:
           index: "Listado de ventas"
           new:   "Generar venta para"
           show:  "Detalle de la venta"
+        close_daily:
+          index:  "Reporte de ventas"
     messages:
       inventory:
         close_daily: "Esta seguro de realizar el cierre"
@@ -88,9 +91,11 @@ en:
           status:         "Estatus en el sistema"
           created_at:     "Fecha detallada"
         close_daily:
-          total_amount_costo: "Total costo:"
+          total_amount_cost: "Total costo:"
           total_amount_sale:  "Total venta:"
           total_amount_gain:  "Total ganancia:"
+          to:                 "Hasta"
+          from:               "Desde"
   controllers:
     actions:
       message:

@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 20150205031445) do
   end
 
   create_table "dailyclosures", force: true do |t|
-    t.integer  "dailysale_id",                               null: false
-    t.float    "total_amount_sale",            default: 0.0, null: false
-    t.float    "total_amount_costo",           default: 0.0, null: false
-    t.float    "total_amount_gain",            default: 0.0, null: false
-    t.date     "cdate_on",                                   null: false
-    t.string   "status",             limit: 1, default: "A", null: false
-    t.integer  "created_by",                   default: 0,   null: false
-    t.integer  "updated_by",                   default: 0,   null: false
+    t.integer  "dailysale_id",                              null: false
+    t.float    "total_amount_sale",           default: 0.0, null: false
+    t.float    "total_amount_cost",           default: 0.0, null: false
+    t.float    "total_amount_gain",           default: 0.0, null: false
+    t.date     "cdate_on",                                  null: false
+    t.string   "status",            limit: 1, default: "A", null: false
+    t.integer  "created_by",                  default: 0,   null: false
+    t.integer  "updated_by",                  default: 0,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

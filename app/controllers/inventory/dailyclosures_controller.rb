@@ -3,6 +3,20 @@ class Inventory::DailyclosuresController < ApplicationController
   before_action :validate_daily_close, only: [:create]
 
   def index
+    
+    if params[:q]
+      @search =  Dailyclosure.all.search(params[:q])
+      @inventory_dc = @search.result.page(params[:page]).per(12)
+    else
+      @search =  Dailyclosure.between((Time.now - 1.month).strftime("%Y-%d-%m"),Time.now.strftime("%Y-%d-%m")).search(params[:q])
+      @inventory_dc = @search.result.page(params[:page]).per(12)
+    end
+
+    respond_to do |format|
+      format.html { render :index}
+      format.js { render :index }
+    end
+
   end
 
   def create

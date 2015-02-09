@@ -1,11 +1,11 @@
 $(function () {
    
-   $("#load").hide();
+   $("#psload").hide();
    $("#formSearch").hide();
    
    $("#formSearchItem").submit(function(){
       $('#items').html("");
-      $("#load").show();
+      $("#psload").show();
    });
 
   $("#filterItem").click(function(){

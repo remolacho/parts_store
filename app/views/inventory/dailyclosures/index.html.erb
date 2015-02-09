@@ -1,2 +1,31 @@
-<h1>Inventory::Dailyclosures#index</h1>
-<p>Find me in app/views/inventory/dailyclosures/index.html.erb</p>
+<%= render partial: "/shared/flash" %>
+<h3><%= t("views.titles.inventory.close_daily.index") %></h3>
+<div id="formSearch">
+  <%= search_form_for @search, url:  inventory_dailyclosures_path, remote: :true, id: "formSearchDC" do |f| %>
+    <div class="row well">
+      <div class="form-group col-xs-2">
+        <%= f.label  t("views.fields.inventory.close_daily.from") %>
+        <%= f.text_field :cdate_on_gteq, value: (Time.now - 1.month).strftime("%m-%d-%Y"), class: "form-control", data:{provide: 'datepicker'}  %>
+      </div>
+      <div class="form-group col-xs-2">
+        <%= f.label t("views.fields.inventory.close_daily.to") %>
+        <%= f.text_field :cdate_on_lteq, value: Time.now.strftime("%m-%d-%Y"), class: "form-control", data:{provide: 'datepicker'} %>
+      </div>
+      <div class="form-group col-xs-4">
+         <%= f.label ".", "." %></br>
+         <%= f.submit I18n.t("views.links.btn.search"), class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div id="psload">
+  <%= render partial: "/shared/msg_load" %> 
+</div>
+<div id="dailyclosures">
+  <%= render partial: "dailyclosures" %>
+</div>
+<div class="paginator" id="paginator">
+  <%= paginate @inventory_dc, remote: true %>
+</div>
+<%= link_to t("views.links.btn.back"), inventory_items_path, class: "btn btn-warning" %>
+<%= javascript_include_tag 'inventory/dailyclosures', 'data-turbolinks-track' => true %>

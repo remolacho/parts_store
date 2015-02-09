@@ -1,9 +1,13 @@
 class Dailyclosure < ActiveRecord::Base
 	include Audit
-    belongs_to :dailysale
-    validate :daily_sales
+  belongs_to :dailysale
+  validate :daily_sales
     
-    after_save :close_daily_sale
+  after_save :close_daily_sale
+
+  scope :between, ->(from,to){
+    where("cdate_on BETWEEN ? AND ?", from,to)
+  }
 
 private
   def daily_sales
@@ -18,7 +22,7 @@ private
   def close_daily_sale
     begin
       dailysale = Dailysale.find(self.dailysale_id)
-      self.destroy unless dailysale.update_attributes(status: "C")  
+      self.destroy unless dailysale.update_attributes(status: "C") 
     rescue Exception => e
       self.destroy
       errors.add(:close_daily_sale, e.to_s); false
