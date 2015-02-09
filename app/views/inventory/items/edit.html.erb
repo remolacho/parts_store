@@ -1,4 +1,7 @@
 <center><h3><%= t("views.titles.inventory.item.edit") %></h3></center>
+<center><p>
+<%= render partial: "/shared/actions" %>
+</p></center>
 <%= form_for(@inventory_item, url:  inventory_item_path(@inventory_item), method: :put) do |f| %>
 <%= render partial: 'form', locals: {obj: f} %>
 <% end %>

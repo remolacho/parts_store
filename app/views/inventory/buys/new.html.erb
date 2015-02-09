@@ -1,4 +1,7 @@
 <center><h3><%= "#{t('views.titles.inventory.buy.new')} #{@inventory_item.name}" %></h3></center>
+<center><p>
+<%= render partial: "/shared/actions" %>
+</p></center>
 <%= form_for(@inventory_buy , url:   inventory_buys_path, method: :post ) do |f| %>
 <%= f.hidden_field :cdate_on, value: Time.now %>
 <%= f.hidden_field :item_id, value: @inventory_item.id %>

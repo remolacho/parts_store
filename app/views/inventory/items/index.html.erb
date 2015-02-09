@@ -1,10 +1,8 @@
 <%= render partial: "/shared/flash" %>
 <h3><%= t("views.titles.inventory.item.index") %></h3>
 <p>
-<%= link_to t("views.links.btn.filtro_item"), "#formSearch", class: "btn btn-success", id: "filterItem" %>
-<%= link_to t("views.links.btn.new_item"), new_inventory_item_path, class: "btn btn-primary" %>
-<%= link_to t("views.links.btn.delete_sale"), inventory_sales_path, class: "btn btn-danger" %>
-<%= link_to t("views.links.btn.report_sales"), inventory_dailyclosures_path, class: "btn btn-warning" %>
+<%= link_to t("views.links.btn.filtro_item"), "#formSearch", class: "btn btn-default", id: "filterItem" %>
+<%= render partial: "/shared/actions" %>
 </p>
 <div id="formSearch">
   <%= search_form_for @search, url:  inventory_items_path , remote: :true, id: "formSearchItem" do |f| %>

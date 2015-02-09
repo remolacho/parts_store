@@ -1,5 +1,8 @@
 <%= render partial: "/shared/flash" %>
 <h3><%= t("views.titles.inventory.close_daily.index") %></h3>
+<p>
+<%= render partial: "/shared/actions" %>
+</p>
 <div id="formSearch">
   <%= search_form_for @search, url:  inventory_dailyclosures_path, remote: :true, id: "formSearchDC" do |f| %>
     <div class="row well">

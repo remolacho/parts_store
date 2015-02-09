@@ -40,7 +40,7 @@
   <%= f.hidden_field :total_amount_sale, value: total_sale %>
   <%= f.hidden_field :total_amount_cost, value: total_cost %>
   <%= f.hidden_field :total_amount_gain, value: total_gain %>
-  <%= f.hidden_field :cdate_on, value: Time.now %>
+  <%= f.hidden_field :cdate_on, value: @dailysale.cdate_on %>
   <%= f.submit t("views.links.btn.close_daily"), class: "btn btn-primary", data: {confirm: I18n.t('views.messages.inventory.close_daily')} %>
   <%= link_to t("views.links.btn.return"), inventory_dailysales_path, class: "btn btn-warning" %>
 <% end %>
