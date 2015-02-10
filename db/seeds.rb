@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Category.create(longname: "Correas", shortname: "CORR")
-Category.create(longname: "Cascos", shortname: "CAS")
+Inventory::Category.create(longname: "Correas", shortname: "CORR")
+Inventory::Category.create(longname: "Cascos", shortname: "CAS")
 role = Role.create(longname: "Gerente", shortname: "GEREN")
 
 params_user = {firstname:    "admin", 

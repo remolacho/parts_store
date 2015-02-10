@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150209155829) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "buys", force: true do |t|
     t.integer  "item_id",                             null: false
     t.text     "description"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150209155829) do
     t.datetime "updated_at"
   end
 
-  add_index "buys", ["item_id"], name: "index_buys_on_item_id"
+  add_index "buys", ["item_id"], name: "index_buys_on_item_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "longname",   limit: 50,               null: false
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 20150209155829) do
     t.datetime "updated_at"
   end
 
-  add_index "dailyclosures", ["dailysale_id"], name: "index_dailyclosures_on_dailysale_id"
+  add_index "dailyclosures", ["dailysale_id"], name: "index_dailyclosures_on_dailysale_id", using: :btree
 
   create_table "dailysales", force: true do |t|
     t.string   "status",     limit: 1, default: "A", null: false
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 20150209155829) do
     t.datetime "updated_at"
   end
 
-  add_index "items", ["category_id"], name: "index_items_on_category_id"
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "longname",   limit: 50,               null: false
@@ -101,8 +104,8 @@ ActiveRecord::Schema.define(version: 20150209155829) do
     t.datetime "updated_at"
   end
 
-  add_index "sales", ["dailysale_id"], name: "index_sales_on_dailysale_id"
-  add_index "sales", ["item_id"], name: "index_sales_on_item_id"
+  add_index "sales", ["dailysale_id"], name: "index_sales_on_dailysale_id", using: :btree
+  add_index "sales", ["item_id"], name: "index_sales_on_item_id", using: :btree
 
   create_table "stocks", force: true do |t|
     t.integer  "item_id",                                null: false
@@ -117,7 +120,7 @@ ActiveRecord::Schema.define(version: 20150209155829) do
     t.datetime "updated_at"
   end
 
-  add_index "stocks", ["item_id"], name: "index_stocks_on_item_id"
+  add_index "stocks", ["item_id"], name: "index_stocks_on_item_id", using: :btree
 
   create_table "users", force: true do |t|
     t.integer  "role_id"
@@ -147,9 +150,9 @@ ActiveRecord::Schema.define(version: 20150209155829) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["role_id"], name: "index_users_on_role_id"
-  add_index "users", ["usertag"], name: "index_users_on_usertag", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
+  add_index "users", ["usertag"], name: "index_users_on_usertag", unique: true, using: :btree
 
 end
