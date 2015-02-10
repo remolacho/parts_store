@@ -1,4 +1,4 @@
-class Dailysale < ActiveRecord::Base
+class  Inventory::Dailysale < ActiveRecord::Base
 	include Audit
 	has_many :sales, dependent: :destroy
 	has_many :dailyclosures, dependent: :destroy

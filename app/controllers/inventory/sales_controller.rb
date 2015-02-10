@@ -5,7 +5,7 @@ class Inventory::SalesController < ApplicationController
   before_action :validate_daily_close, only: [:create, :destroy, :new]
   
   def index
-    @inventory_sales = Sale.includes(:item,:dailysale).where(cdate_on: Time.new.strftime("%Y-%m-%d")).order(id: :desc)
+    @inventory_sales =  Inventory::Sale.includes(:item,:dailysale).where(cdate_on: Time.new.strftime("%Y-%m-%d")).order(id: :desc)
   end
 
   def show
@@ -14,8 +14,8 @@ class Inventory::SalesController < ApplicationController
   end
 
   def new
-    @inventory_sale = Sale.new
-    @inventory_item = Item.find(params[:item_id])
+    @inventory_sale =  Inventory::Sale.new
+    @inventory_item =  Inventory::Item.find(params[:item_id])
     @inventory_stock = @inventory_item.stocks.first
   end
 
@@ -23,7 +23,7 @@ class Inventory::SalesController < ApplicationController
   end
 
   def create
-    @inventory_sale = Sale.new(inventory_sale_params)
+    @inventory_sale =  Inventory::Sale.new(inventory_sale_params)
     if @inventory_sale.add(current_user)
        if @inventory_sale.saleInStock
          redirect_to inventory_sale_path(@inventory_sale), flash: { alert: I18n.t("controllers.actions.message.save") }
@@ -34,7 +34,7 @@ class Inventory::SalesController < ApplicationController
        end
     else
       flash[:error] = I18n.t("controllers.actions.message.err_save") 
-      @inventory_item = Item.find(@inventory_sale.item_id)
+      @inventory_item =  Inventory::Item.find(@inventory_sale.item_id)
       render :new
     end
   end
@@ -64,11 +64,11 @@ class Inventory::SalesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_inventory_sale
-      @inventory_sale = Sale.find(params[:id])
+      @inventory_sale =  Inventory::Sale.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inventory_sale_params
-      params.require(:sale).permit(:quantity, :cdate_on, :amount, :item_id, :dailysale_id)
+      params.require(:inventory_sale).permit(:quantity, :cdate_on, :amount, :item_id, :dailysale_id)
     end
 end

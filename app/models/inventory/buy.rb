@@ -1,4 +1,4 @@
-class Buy < ActiveRecord::Base
+class  Inventory::Buy < ActiveRecord::Base
 	include Audit
 
 	belongs_to :item
@@ -12,14 +12,14 @@ class Buy < ActiveRecord::Base
 public 
   def add_stock
     begin
-      inventory_stock = Stock.find_by(item_id: self.item_id)
+      inventory_stock =  Inventory::Stock.find_by(item_id: self.item_id)
       if inventory_stock
         inventory_stock.udate_on = Time.now
         inventory_stock.existence_back = inventory_stock.existence
         inventory_stock.existence += self.quantity
         inventory_stock.alter(nil)
       else
-        inventory_stock = Stock.new(item_id: self.item_id, existence: self.quantity, existence_back: 0, cdate_on: Time.now, udate_on: Time.now, status: "A")
+        inventory_stock =  Inventory::Stock.new(item_id: self.item_id, existence: self.quantity, existence_back: 0, cdate_on: Time.now, udate_on: Time.now, status: "A")
         inventory_stock.add(nil)
       end 
     rescue Exception => e

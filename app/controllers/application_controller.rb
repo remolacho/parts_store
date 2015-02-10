@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
 
 public 
   def validate_daily_close
-     daily_close = Dailysale.where(status: "C",cdate_on: Time.new.strftime("%Y-%m-%d")).count
+     daily_close =  Inventory::Dailysale.where(status: "C",cdate_on: Time.new.strftime("%Y-%m-%d")).count
      redirect_to inventory_items_path, flash: { alert: I18n.t("controllers.actions.message.save_daily_close") }  if daily_close > 0  
   end
 
   def validate_not_close_daily
-     daily_open = Dailysale.where(status: "A").less_date(Time.new.strftime("%Y-%m-%d")).count
+     daily_open =  Inventory::Dailysale.where(status: "A").less_date(Time.new.strftime("%Y-%m-%d")).count
      redirect_to inventory_dailysales_path if daily_open > 0 
   end
 end
