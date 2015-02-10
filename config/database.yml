@@ -29,5 +29,5 @@ development:
   encoding: unicode
   database: parts_store_dev
   pool: 5
-  username: postgres
-  password: 1234554321
+  username: globalr2
+  password: 0009
