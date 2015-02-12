@@ -1,4 +1,4 @@
-class Stock < ActiveRecord::Base
+class  Inventory::Stock < ActiveRecord::Base
   include Audit
   belongs_to :item
 

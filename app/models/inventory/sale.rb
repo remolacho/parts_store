@@ -1,4 +1,4 @@
-class Sale < ActiveRecord::Base
+class  Inventory::Sale < ActiveRecord::Base
 	include Audit
 	belongs_to :item
   belongs_to :dailysale
@@ -15,8 +15,8 @@ private
 
   def create_or_find_dailysale
     begin
-      dailysale = Dailysale.find_by(status: "A", cdate_on: Time.new.strftime("%Y-%m-%d"))
-      dailysale = Dailysale.create(cdate_on: Time.now) unless dailysale
+      dailysale =  Inventory::Dailysale.find_by(status: "A", cdate_on: Time.new.strftime("%Y-%m-%d"))
+      dailysale =  Inventory::Dailysale.create(cdate_on: Time.now) unless dailysale
       self.dailysale_id = dailysale.id
     rescue Exception => e
       errors.add(:dailysale, "#{I18n.t('models.inventory.sale.messages.exception_dailysale')} #{e.to_s}"); false
@@ -25,7 +25,7 @@ private
 
   def validate_stock
   	begin
-  	  stock = Stock.find_by(item_id: self.item_id)
+  	  stock =  Inventory::Stock.find_by(item_id: self.item_id)
   	  total = stock.existence - self.quantity
   	  total >= 0 ? true : errors.add(:existence, I18n.t('models.inventory.sale.messages.validate_stock')); false  
   	rescue Exception => e
@@ -36,7 +36,7 @@ private
 public
   def saleInStock
      begin
-        inventory_stock = Stock.find_by(item_id: self.item_id)
+        inventory_stock =  Inventory::Stock.find_by(item_id: self.item_id)
         inventory_stock.udate_on = Time.now
         inventory_stock.existence_back = inventory_stock.existence
         inventory_stock.existence -= self.quantity
@@ -49,7 +49,7 @@ public
 
   def restore_stock
      begin
-        inventory_stock = Stock.find_by(item_id: self.item_id)
+        inventory_stock =  Inventory::Stock.find_by(item_id: self.item_id)
         inventory_stock.udate_on = Time.now
         inventory_stock.existence_back = inventory_stock.existence
         inventory_stock.existence += self.quantity

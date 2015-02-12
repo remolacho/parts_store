@@ -9,7 +9,7 @@
     <div class="row well">
       <div class="form-group col-xs-2">
         <%= f.label  t("views.fields.inventory.item.category") %>
-        <%= f.select :category_id_eq, options_for_select(Category.all.collect{ |c| [c.longname, c.id] }), {include_blank: t('s.v.f.choose')} , {class: 'form-control', id: "categories" } %>
+        <%= f.select :category_id_eq, options_for_select(Inventory::Category.all.collect{ |c| [c.longname, c.id] }), {include_blank: t('s.v.f.choose')} , {class: 'form-control', id: "categories" } %>
       </div>
       <div class="form-group col-xs-3">
         <%= f.label :name_cont, t("views.fields.inventory.item.name") %>

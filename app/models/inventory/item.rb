@@ -1,4 +1,4 @@
-class Item < ActiveRecord::Base
+class Inventory::Item < ActiveRecord::Base
 	include Audit
 	  belongs_to :category
     has_many :buys , dependent: :destroy
