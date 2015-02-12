@@ -12,4 +12,5 @@ class Inventory::DailysalesController < ApplicationController
   	@dailysale = Dailysale.find(params[:id])
     @inventory_sales = @dailysale.sales.includes(:item).order(id: :desc)
   end
+  
 end

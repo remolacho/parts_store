@@ -25,10 +25,16 @@ class Inventory::DailyclosuresController < ApplicationController
        if daily_close.add(current_user)
      	   redirect_to inventory_items_path, flash: { alert: I18n.t("controllers.actions.message.save_daily_close") } 
        else
-      	 redirect_to inventory_sales_path, flash: { error: "#{I18n.t('controllers.actions.message.err_daily_close')} #{daily_close.errors.first}" } 
-       end	
+         @dailysale = Dailysale.find(daily_close.dailysale_id)
+         @inventory_sales = @dailysale.sales.includes(:item).order(id: :desc)
+         flash[:error] = "#{I18n.t('controllers.actions.message.err_daily_close')} #{daily_close.errors.first}" 
+      	 render "/inventory/dailysales/show"
+       end
   	 rescue Exception => e
-  	 	 redirect_to inventory_sales_path, flash: { error: "#{e.to_s} intente nuevamente"} 
+         @dailysale = Dailysale.find(daily_close.dailysale_id)
+         @inventory_sales = @dailysale.sales.includes(:item).order(id: :desc)
+         flash[:error] =  "#{e.to_s} intente nuevamente"
+         render "/inventory/dailysales/show"
   	 end
   end
 

@@ -57,7 +57,8 @@ en:
         stock:
           show:  "Detalle del inventario"
         sale:
-          index: "Listado de ventas"
+          index: "Lista de ventas"
+          close: "Lista de ventas por cerrar"
           new:   "Generar venta para"
           show:  "Detalle de la venta"
         close_daily:
@@ -128,7 +129,7 @@ en:
         restore_stock:     "Se restaura el articulo(s) en el inventario con exito"
         err_restore_stock: "Se produjo un error al intentar eliminar la venta intente de nuevo"
         err_daily_close:   "Se presento un problema con el cierre diario"
-        save_daily_close:  "Se realizo el cierre del dia no se procesaran mas ventas por hoy"
+        save_daily_close:  "Se realizo el cierre del dia con exito"
   models:
     inventory:
       item:
