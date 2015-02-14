@@ -30,11 +30,13 @@ class Inventory::SalesController < ApplicationController
        else
           flash[:error] = I18n.t("controllers.actions.message.err_save") 
           @inventory_item =  Inventory::Item.find(@inventory_sale.item_id)
+          @inventory_stock = @inventory_item.stocks.first
           render :new
        end
     else
       flash[:error] = I18n.t("controllers.actions.message.err_save") 
       @inventory_item =  Inventory::Item.find(@inventory_sale.item_id)
+      @inventory_stock = @inventory_item.stocks.first
       render :new
     end
   end

@@ -5,9 +5,9 @@ class Inventory::BuysController < ApplicationController
   end
 
   def show
-    @inventory_buy  =  Inventory::Buy.find(params[:id])
-    @inventory_item = @inventory_buy.item
-    @inventory_stock = @inventory_item.stocks.first
+    @inventory_buy   =  Inventory::Buy.find(params[:id])
+    @inventory_item  =  @inventory_buy.item
+    @inventory_stock =  @inventory_item.stocks.first
   end
 
   def new
