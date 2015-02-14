@@ -24,12 +24,12 @@ class Inventory::BuysController < ApplicationController
         redirect_to inventory_buy_path(@inventory_buy), flash: { alert: I18n.t("controllers.actions.message.save") }
       else
         flash[:error] = I18n.t("controllers.actions.message.err_save") 
-        @inventory_item = Item.find(@inventory_buy.item_id)
+        @inventory_item =  Inventory::Item.find(@inventory_buy.item_id)
         render :new        
       end
     else
       flash[:error] = I18n.t("controllers.actions.message.err_save") 
-      @inventory_item = Item.find(@inventory_buy.item_id)
+      @inventory_item =  Inventory::Item.find(@inventory_buy.item_id)
       render :new
     end
 

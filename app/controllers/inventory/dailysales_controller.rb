@@ -1,11 +1,11 @@
 class Inventory::DailysalesController < ApplicationController
   before_action :authenticate_user!
   def index
-  	begin
+  	#begin
   	  @dailysales =  Inventory::Dailysale.where(status: "A").less_date(Time.new.strftime("%Y-%m-%d"))
-  	rescue Exception => e
-      @dailysales =  Inventory::Dailysale.where(status: "A").less_date(Time.new.strftime("%Y-%m-%d"))		
-  	end
+  	#rescue Exception => e
+    #  @dailysales =  Inventory::Dailysale.where(status: "A").less_date(Time.new.strftime("%Y-%m-%d"))		
+  	#end
   end
 
   def show

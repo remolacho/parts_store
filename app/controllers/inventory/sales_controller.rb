@@ -29,7 +29,7 @@ class Inventory::SalesController < ApplicationController
          redirect_to inventory_sale_path(@inventory_sale), flash: { alert: I18n.t("controllers.actions.message.save") }
        else
           flash[:error] = I18n.t("controllers.actions.message.err_save") 
-          @inventory_item = Item.find(@inventory_sale.item_id)
+          @inventory_item =  Inventory::Item.find(@inventory_sale.item_id)
           render :new
        end
     else
