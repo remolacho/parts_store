@@ -77,7 +77,7 @@ en:
         item:
           name:        "Nombre del articulo"
           description: "Descripcion"
-          costprice:   "Precio de compra"
+          costprice:   "Precio de compra c/u"
           saleprice:   "Precio a la venta"
           cdate_on:    "Fecha creacion"
           category:    "Categoria"
@@ -86,7 +86,7 @@ en:
         buy:
           description:  "Descripcion"
           quantity:     "Unidades"
-          buyprice:     "Precio de compra"
+          buyprice:     "Precio en factura"
           status:       "Estatus en el sistema"
           cdate_on:     "Fecha creacion"
         stock:
