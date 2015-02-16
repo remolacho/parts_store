@@ -6,21 +6,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Inventory::Category.create(longname: "Correas", shortname: "CORR")
-Inventory::Category.create(longname: "Cascos", shortname: "CAS")
+Inventory::Category.create(longname: "Partes mecanicas", shortname: "pmeca")
+Inventory::Category.create(longname: "Partes electricas", shortname: "pelct")
+Inventory::Category.create(longname: "Accesorios", shortname: "acces")
+Inventory::Category.create(longname: "Otros", shortname: "otros")
+
 role = Role.create(longname: "Gerente", shortname: "GEREN")
 
 params_user = {firstname:    "admin", 
 	          lastname:     "admin",
-               email:        "jonathan.rojas@globalr.net",
+               email:        "partstore.armando@gmail.com",
                usertag:      "armando", 
-               street_name:  "Barrio Obrero", 
+               street_name:  "Barrio Obrero",
                street_num:   "calle 14",
                career_num:   "carrera 12",
-               home_num:     "12-12",
+               home_num:     "14-10",
                address:      "Barrio Obrero, calle 14, carrera 12", 
-               password:     "12345678",
-               mobile_phone: "12345678909876",
+               password:     "17811780",
+               mobile_phone: "04247608879",
                role_id:      role.id
               }
 
