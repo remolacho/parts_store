@@ -13,8 +13,8 @@ Inventory::Category.create(longname: "Otros", shortname: "otros")
 
 role = Role.create(longname: "Gerente", shortname: "GEREN")
 
-params_user = {firstname:    "admin", 
-	          lastname:     "admin",
+params_user = {firstname:    "armando", 
+	          lastname:     "Bautista",
                email:        "partstore.armando@gmail.com",
                usertag:      "armando", 
                street_name:  "Barrio Obrero",
