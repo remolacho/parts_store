@@ -7,7 +7,7 @@ class Inventory::ItemsController < ApplicationController
     
     #begin
       @search =   Inventory::Item.includes(:category, :stocks).search(params[:q])
-      @inventory_items = @search.result
+      @inventory_items = @search.result.order(:name)
     #rescue Exception => e
     #  @search =  Item.includes(:category, :stocks).all.search(params[:q])
     #  @inventory_items = @search.result

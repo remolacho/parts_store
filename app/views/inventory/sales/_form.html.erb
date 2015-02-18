@@ -30,9 +30,11 @@
     <div class="form-group col-xs-6">
        <%= obj.label t("views.fields.inventory.sale.amount") %><br>
        <%= obj.text_field :amount, readonly: :true, id: "txtamount", class: "form-control" %>
+       <%= hidden_field_tag "costprice", @inventory_item.costprice, id: "txtcostprice" %>
+       <%= obj.hidden_field :amount_cost, id: "txtamountcost" %>   
     </div>
   </div>
-
+  
   <div class= "row"> 
     <div class="col-xs-8">
       <%= obj.submit t("views.links.btn.save"), class: "btn btn-success" %>

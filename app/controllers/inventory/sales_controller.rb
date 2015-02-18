@@ -71,6 +71,6 @@ class Inventory::SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inventory_sale_params
-      params.require(:inventory_sale).permit(:quantity, :cdate_on, :amount, :item_id, :dailysale_id)
+      params.require(:inventory_sale).permit(:quantity, :cdate_on, :amount, :amount_cost, :item_id, :dailysale_id)
     end
 end

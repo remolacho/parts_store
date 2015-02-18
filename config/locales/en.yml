@@ -78,7 +78,7 @@ en:
           name:        "Nombre del articulo"
           description: "Descripcion"
           costprice:   "Precio de compra c/u"
-          saleprice:   "Precio a la venta del articulo"
+          saleprice:   "Precio de venta del articulo"
           cdate_on:    "Fecha creacion"
           category:    "Categoria"
           status:      "Estatus en el sistema"
@@ -97,6 +97,7 @@ en:
           udate_on:       "Ultima carga"
         sale:
           amount:         "Monto de la venta"
+          amount_cost:    "Costo del producto"
           quantity:       "Cantidad vendida"
           cdate_on:       "Fecha de la venta"
           status:         "Estatus en el sistema"

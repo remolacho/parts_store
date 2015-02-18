@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150209155829) do
     t.integer  "item_id",                              null: false
     t.integer  "dailysale_id",                         null: false
     t.float    "amount",                 default: 0.0
+    t.float    "amount_cost",            default: 0.0
     t.integer  "quantity",               default: 0
     t.date     "cdate_on",                             null: false
     t.string   "status",       limit: 1, default: "A", null: false

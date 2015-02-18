@@ -28,7 +28,7 @@
         <td><%= link_to t("views.links.btn.show"), inventory_sale_path(inventory_sale), class: "btn btn-success" %></td>
         <td><%= link_to  t("views.links.btn.destroy"), inventory_sale_path(inventory_sale), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <% total_cost += inventory_sale.item.costprice * inventory_sale.quantity %>
+      <% total_cost += inventory_sale.amount_cost %>
       <% total_sale += inventory_sale.amount %>
     <% end %>
   </tbody>

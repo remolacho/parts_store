@@ -4,6 +4,7 @@ class CreateInventorySales < ActiveRecord::Migration
       t.references :item, index: true, null: false
       t.references :dailysale, index: true,  null: false
       t.float   :amount, default: 0
+      t.float   :amount_cost, default: 0
       t.integer :quantity, default: 0
       t.date    :cdate_on, null: false
       t.string  :status, limit: 1, null: false, default: "A"

@@ -24,7 +24,7 @@
         <td><%= inventory_sale.created_at %></td>
         <td><%= link_to t("views.links.btn.show"), inventory_sale_path(inventory_sale), class: "btn btn-success" %></td>
       </tr>
-      <% total_cost += inventory_sale.item.costprice * inventory_sale.quantity %>
+      <% total_cost += inventory_sale.amount_cost %>
       <% total_sale += inventory_sale.amount %>
     <% end %>
   </tbody>
