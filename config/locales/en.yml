@@ -139,8 +139,8 @@ en:
           presence_category:  "El articulo debe pertenecer a una categoria"
           unique_name:        "El nombre del producto ya existe"
           alone_numbers:      "Se deben ingresar solo numeros para los campos precio de costo y precio de venta"
-          greater_costprice:  "Precio de costo no puede ser menor a 100 Bsf."
-          greater_saleprice:  "Precio de venta no puede ser menor a 100 Bsf."
+          greater_costprice:  "Precio de costo no puede ser menor a 0 Bsf."
+          greater_saleprice:  "Precio de venta no puede ser menor a 0 Bsf."
       buy:
         messages:
           presence_item:      "La compra debe pertenecer a un articulo"

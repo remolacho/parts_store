@@ -2,7 +2,7 @@ class CreateInventoryItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
       t.references :category, index: true,  null: false
-      t.string :name, null: false, limit: 50
+      t.string :name, null: false, limit: 100
       t.text :description
       t.float :costprice, null: false, default: 0
       t.float :saleprice, null: false, default: 0
